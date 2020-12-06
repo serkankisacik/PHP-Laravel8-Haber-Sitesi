@@ -1,1 +1,1 @@
-selam
+@extends('layouts.main')
