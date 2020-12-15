@@ -53,14 +53,24 @@
                             <div class="col-md-4">
                                 <div class="right_section">
                                     <ul class="nav navbar-nav">
-                                        <li><a href="#">Login</a></li>
-                                        <li><a href="#">Register</a></li>
+                                        @if (Route::has('login'))
+                                                @auth
+                                                    <li><a href="{{ url('/dashboard') }}">Admin Paneli</a></li>
+                                                @else
+                                                    <li><a href="{{ route('login') }}">Oturum Aç</a></li>
+
+                                                    @if (Route::has('register'))
+                                                    <li><a href="{{ route('register') }}">Kayıt Ol</a></li>
+                                                    @endif
+                                                @endauth
+                                        @endif
+
                                         <li class="dropdown lang">
                                             <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
-                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">En <i
+                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Tr <i
                                                     class="fa fa-angle-down"></i></button>
                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                                <li><a href="#">Bn</a></li>
+                                                <li><a href="#">En</a></li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -78,7 +88,7 @@
                                                                 <input type="text" class="form-control"
                                                                        placeholder="Type Something"> <span class="input-group-btn">
                                                                             <button type="submit"
-                                                                                    class="btn btn-primary">Search
+                                                                                    class="btn btn-primary">Arama
                                                                             </button>
                                                                         </span></div>
                                                         </form>
