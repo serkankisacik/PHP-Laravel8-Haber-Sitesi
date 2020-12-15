@@ -27,7 +27,7 @@
                 <div class="footer_widget_title"><h3><a href="category.html" target="_self">Ulag Hakkında</a></h3></div>
                 <div class="logo footer-logo">
                     <a title="fontanero" href="index.html">
-                        <img src="assets/img/tech_about.jpg" alt="technews">
+                        <img src="{{asset('assets')}}/img/tech_about.jpg" alt="technews">
                     </a>
 
                     <p>Competently conceptualize go forward testing procedures and B2B expertise. Phosfluorescently
@@ -79,7 +79,7 @@
                 </div>
                 <div class="media">
                     <div class="media-left">
-                        <a href="#"><img class="media-object" src="assets/img/editor_pic1.jpg"
+                        <a href="#"><img class="media-object" src="{{asset('assets')}}/img/editor_pic1.jpg"
                                          alt="Generic placeholder image"></a>
                     </div>
                     <div class="media-body">
@@ -97,7 +97,7 @@
                 </div>
                 <div class="media">
                     <div class="media-left">
-                        <a href="#"><img class="media-object" src="assets/img/editor_pic2.jpg"
+                        <a href="#"><img class="media-object" src="{{asset('assets')}}/img/editor_pic2.jpg"
                                          alt="Generic placeholder image"></a>
                     </div>
                     <div class="media-body">
@@ -115,7 +115,7 @@
                 </div>
                 <div class="media">
                     <div class="media-left">
-                        <a href="#"><img class="media-object" src="assets/img/editor_pic3.jpg"
+                        <a href="#"><img class="media-object" src="{{asset('assets')}}/img/editor_pic3.jpg"
                                          alt="Generic placeholder image"></a>
                     </div>
                     <div class="media-body">
@@ -137,18 +137,18 @@
                     <h3><a href="category.html" target="_self">Tech Photos</a></h3>
                 </div>
                 <div class="widget_photos">
-                    <img class="img-thumbnail" src="assets/img/tech_photo1.jpg" alt="Tech Photos">
-                    <img class="img-thumbnail" src="assets/img/tech_photo2.jpg" alt="Tech Photos">
-                    <img class="img-thumbnail" src="assets/img/tech_photo3.jpg" alt="Tech Photos">
-                    <img class="img-thumbnail" src="assets/img/tech_photo4.jpg" alt="Tech Photos">
-                    <img class="img-thumbnail" src="assets/img/tech_photo5.jpg" alt="Tech Photos">
-                    <img class="img-thumbnail" src="assets/img/tech_photo6.jpg" alt="Tech Photos">
-                    <img class="img-thumbnail" src="assets/img/tech_photo7.jpg" alt="Tech Photos">
-                    <img class="img-thumbnail" src="assets/img/tech_photo8.jpg" alt="Tech Photos">
-                    <img class="img-thumbnail" src="assets/img/tech_photo9.jpg" alt="Tech Photos">
-                    <img class="img-thumbnail" src="assets/img/tech_photo10.jpg" alt="Tech Photos">
-                    <img class="img-thumbnail" src="assets/img/tech_photo11.jpg" alt="Tech Photos">
-                    <img class="img-thumbnail" src="assets/img/tech_photo12.jpg" alt="Tech Photos">
+                    <img class="img-thumbnail" src="{{asset('assets')}}/img/tech_photo1.jpg" alt="Tech Photos">
+                    <img class="img-thumbnail" src="{{asset('assets')}}/img/tech_photo2.jpg" alt="Tech Photos">
+                    <img class="img-thumbnail" src="{{asset('assets')}}/img/tech_photo3.jpg" alt="Tech Photos">
+                    <img class="img-thumbnail" src="{{asset('assets')}}/img/tech_photo4.jpg" alt="Tech Photos">
+                    <img class="img-thumbnail" src="{{asset('assets')}}/img/tech_photo5.jpg" alt="Tech Photos">
+                    <img class="img-thumbnail" src="{{asset('assets')}}/img/tech_photo6.jpg" alt="Tech Photos">
+                    <img class="img-thumbnail" src="{{asset('assets')}}/img/tech_photo7.jpg" alt="Tech Photos">
+                    <img class="img-thumbnail" src="{{asset('assets')}}/img/tech_photo8.jpg" alt="Tech Photos">
+                    <img class="img-thumbnail" src="{{asset('assets')}}/img/tech_photo9.jpg" alt="Tech Photos">
+                    <img class="img-thumbnail" src="{{asset('assets')}}/img/tech_photo10.jpg" alt="Tech Photos">
+                    <img class="img-thumbnail" src="{{asset('assets')}}/img/tech_photo11.jpg" alt="Tech Photos">
+                    <img class="img-thumbnail" src="{{asset('assets')}}/img/tech_photo12.jpg" alt="Tech Photos">
                 </div>
 
             </div>
@@ -191,64 +191,5 @@
 
 <a href="#" class="crunchify-top"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
 
-<div class="uc-mobile-menu uc-mobile-menu-effect">
-    <button type="button" class="close" aria-hidden="true" data-toggle="offcanvas"
-            id="uc-mobile-menu-close-btn">&times;</button>
-    <div>
-        <div>
-            <ul id="menu">
-                <li class="active"><a href="blog.html">News</a></li>
-                <li><a href="category.html">Mobile</a></li>
-                <li><a href="blog.html">Tablet</a></li>
-                <li><a href="category.html">Gadgets</a></li>
-                <li><a href="blog.html">Camera</a></li>
-                <li><a href="category.html">Design</a></li>
-                <li class="dropdown m-menu-fw"><a href="#" data-toggle="dropdown" class="dropdown-toggle">More
-                        <span><i class="fa fa-angle-down"></i></span></a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <div class="m-menu-content">
-                                <ul class="col-sm-3">
-                                    <li class="dropdown-header">Widget Haeder</li>
-                                    <li><a href="#">Awesome Features</a></li>
-                                    <li><a href="#">Clean Interface</a></li>
-                                    <li><a href="#">Available Possibilities</a></li>
-                                    <li><a href="#">Responsive Design</a></li>
-                                    <li><a href="#">Pixel Perfect Graphics</a></li>
-                                </ul>
-                                <ul class="col-sm-3">
-                                    <li class="dropdown-header">Widget Haeder</li>
-                                    <li><a href="#">Awesome Features</a></li>
-                                    <li><a href="#">Clean Interface</a></li>
-                                    <li><a href="#">Available Possibilities</a></li>
-                                    <li><a href="#">Responsive Design</a></li>
-                                    <li><a href="#">Pixel Perfect Graphics</a></li>
-                                </ul>
-                                <ul class="col-sm-3">
-                                    <li class="dropdown-header">Widget Haeder</li>
-                                    <li><a href="#">Awesome Features</a></li>
-                                    <li><a href="#">Clean Interface</a></li>
-                                    <li><a href="#">Available Possibilities</a></li>
-                                    <li><a href="#">Responsive Design</a></li>
-                                    <li><a href="#">Pixel Perfect Graphics</a></li>
-                                </ul>
-                                <ul class="col-sm-3">
-                                    <li class="dropdown-header">Widget Haeder</li>
-                                    <li><a href="#">Awesome Features</a></li>
-                                    <li><a href="#">Clean Interface</a></li>
-                                    <li><a href="#">Available Possibilities</a></li>
-                                    <li><a href="#">Responsive Design</a></li>
-                                    <li><a href="#">Pixel Perfect Graphics</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
-</div>
-<!-- .uc-mobile-menu -->
 
-</div>
-<!-- #main-wrapper -->
+

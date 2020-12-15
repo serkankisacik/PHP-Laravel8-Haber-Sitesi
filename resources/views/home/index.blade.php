@@ -41,5 +41,6 @@
     <!-- Category News Section -->
 
     @include('home.categories.videos')
+
 @endsection
 

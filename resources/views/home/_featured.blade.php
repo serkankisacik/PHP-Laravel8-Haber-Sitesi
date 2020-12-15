@@ -4,7 +4,7 @@
             <div class="col-md-7">
                 <div class="feature_article_wrapper">
                     <div class="feature_article_img">
-                        <img class="img-responsive top_static_article_img" src="assets/img/feature-top.jpg"
+                        <img class="img-responsive top_static_article_img" src="{{asset('assets')}}/img/feature-top.jpg"
                              alt="feature-top">
                     </div>
                     <!-- feature_article_img -->
@@ -45,7 +45,7 @@
             <div class="col-md-5">
                 <div class="feature_static_wrapper">
                     <div class="feature_article_img">
-                        <img class="img-responsive" src="assets/img/feature-static1.jpg" alt="feature-top">
+                        <img class="img-responsive" src="{{asset('assets')}}/img/feature-static1.jpg" alt="feature-top">
                     </div>
                     <!-- feature_article_img -->
 
@@ -84,7 +84,7 @@
             <div class="col-md-5">
                 <div class="feature_static_last_wrapper">
                     <div class="feature_article_img">
-                        <img class="img-responsive" src="assets/img/feature-static2.jpg" alt="feature-top">
+                        <img class="img-responsive" src="{{asset('assets')}}/img/feature-static2.jpg" alt="feature-top">
                     </div>
                     <!-- feature_article_img -->
 

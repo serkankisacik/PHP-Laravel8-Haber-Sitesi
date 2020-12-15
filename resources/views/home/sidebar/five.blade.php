@@ -2,7 +2,7 @@
     <div class="widget_title widget_black">
         <h2><a href="#">Sidebar 5</a></h2>
     </div>
-    <div class="widget_body"><img class="img-responsive left" src="assets/img/reader.jpg"
+    <div class="widget_body"><img class="img-responsive left" src="{{asset('assets')}}/img/reader.jpg"
                                   alt="Generic placeholder image">
 
         <p>Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C

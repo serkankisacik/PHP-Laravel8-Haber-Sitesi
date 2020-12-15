@@ -16,11 +16,17 @@
                             <div class="col-md-4">
                                 <div class="left_section">
                                             <span class="date">
-                                                Sunday .
+                                                <?php
+                                                setlocale(LC_TIME,'turkish');
+                                                echo iconv('latin5','utf-8',strftime('%A'));
+                                                ?>
                                             </span>
                                     <!-- Date -->
                                     <span class="time">
-                                                01 Mayıs . 1996
+                                        <?php
+                                        setlocale(LC_TIME,'turkish');
+                                        echo iconv('latin5','utf-8',strftime('%e %B %Y'));
+                                        ?>
                                             </span>
                                     <!-- Time -->
                                     <div class="social">

@@ -8,7 +8,7 @@
                 <div class="category_article_body">
                     <div class="top_article_img">
                         <a href="single.html" target="_self">
-                            <img class="img-responsive" src="assets/img/gad_top1.jpg" alt="feature-top">
+                            <img class="img-responsive" src="{{asset('assets')}}/img/gad_top1.jpg" alt="feature-top">
                         </a>
                     </div>
                     <!-- top_article_img -->
@@ -41,7 +41,7 @@
                 <div class="category_article_list">
                     <div class="media">
                         <div class="media-left">
-                            <a href="#"><img class="media-object" src="assets/img/cat-mobi-sm1.jpg"
+                            <a href="#"><img class="media-object" src="{{asset('assets')}}/img/cat-mobi-sm1.jpg"
                                              alt="Generic placeholder image"></a>
                         </div>
                         <div class="media-body">
@@ -57,7 +57,7 @@
                     </div>
                     <div class="media">
                         <div class="media-left">
-                            <a href="#"><img class="media-object" src="assets/img/cat-mobi-sm3.jpg"
+                            <a href="#"><img class="media-object" src="{{asset('assets')}}/img/cat-mobi-sm3.jpg"
                                              alt="Generic placeholder image"></a>
                         </div>
                         <div class="media-body">
@@ -80,7 +80,7 @@
             <div class="col-md-6">
                 <div class="category_article_body">
                     <div class="top_article_img">
-                        <img class="img-responsive" src="assets/img/gad_top2.jpg" alt="feature-top">
+                        <img class="img-responsive" src="{{asset('assets')}}/img/gad_top2.jpg" alt="feature-top">
                     </div>
                     <!-- top_article_img -->
 

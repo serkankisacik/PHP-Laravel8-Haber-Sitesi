@@ -9,7 +9,7 @@
             <div class="col-md-5">
                 <div class="top_article_img">
                     <a href="single.html" target="_self">
-                        <img class="img-responsive" src="assets/img/cam_left1.jpg" alt="feature-top">
+                        <img class="img-responsive" src="{{asset('assets')}}/img/cam_left1.jpg" alt="feature-top">
                     </a>
                 </div>
                 <!-- top_article_img -->
@@ -53,7 +53,7 @@
             <div class="col-md-5">
                 <div class="top_article_img">
                     <a href="single.html" target="_self">
-                        <img class="img-responsive" src="assets/img/cam_left2.jpg" alt="feature-top">
+                        <img class="img-responsive" src="{{asset('assets')}}/img/cam_left2.jpg" alt="feature-top">
                     </a>
                 </div>
                 <!-- top_article_img -->
@@ -93,7 +93,7 @@
             <div class="col-md-5">
                 <div class="top_article_img">
                     <a href="single.html" target="_self">
-                        <img class="img-responsive" src="assets/img/cam_left3.jpg" alt="feature-top">
+                        <img class="img-responsive" src="{{asset('assets')}}/img/cam_left3.jpg" alt="feature-top">
                     </a>
                 </div>
                 <!-- media_social -->

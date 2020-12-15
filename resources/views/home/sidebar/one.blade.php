@@ -4,7 +4,7 @@
     </div>
     <div class="media">
         <div class="media-left">
-            <a href="#"><img class="media-object" src="assets/img/pop_right1.jpg" alt="Generic placeholder image"></a>
+            <a href="#"><img class="media-object" src="{{asset('assets')}}/img/pop_right1.jpg" alt="Generic placeholder image"></a>
         </div>
         <div class="media-body">
             <h3 class="media-heading">
@@ -23,7 +23,7 @@
     </div>
     <div class="media">
         <div class="media-left">
-            <a href="#"><img class="media-object" src="assets/img/pop_right2.jpg" alt="Generic placeholder image"></a>
+            <a href="#"><img class="media-object" src="{{asset('assets')}}/img/pop_right2.jpg" alt="Generic placeholder image"></a>
         </div>
         <div class="media-body">
             <h3 class="media-heading">
@@ -43,7 +43,7 @@
     </div>
     <div class="media">
         <div class="media-left">
-            <a href="#"><img class="media-object" src="assets/img/pop_right3.jpg" alt="Generic placeholder image"></a>
+            <a href="#"><img class="media-object" src="{{asset('assets')}}/img/pop_right3.jpg" alt="Generic placeholder image"></a>
         </div>
         <div class="media-body">
             <h3 class="media-heading">
@@ -63,7 +63,7 @@
     </div>
     <div class="media">
         <div class="media-left">
-            <a href="#"><img class="media-object" src="assets/img/pop_right4.jpg" alt="Generic placeholder image"></a>
+            <a href="#"><img class="media-object" src="{{asset('assets')}}/img/pop_right4.jpg" alt="Generic placeholder image"></a>
         </div>
         <div class="media-body">
             <h3 class="media-heading">
