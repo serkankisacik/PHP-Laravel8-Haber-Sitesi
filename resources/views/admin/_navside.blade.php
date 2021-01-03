@@ -11,6 +11,9 @@
                 <a class="active-menu"  href="index.html"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
             </li>
             <li>
+                <a  href="ui.html"><i class="fa fa-search fa-3x"></i> Kategori</a>
+            </li>
+            <li>
                 <a  href="ui.html"><i class="fa fa-desktop fa-3x"></i> UI Elements</a>
             </li>
             <li>
