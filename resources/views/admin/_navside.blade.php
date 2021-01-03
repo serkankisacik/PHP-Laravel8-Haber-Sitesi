@@ -8,10 +8,10 @@
 
 
             <li>
-                <a class="active-menu"  href="index.html"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
+                <a class="active-menu"  href="index.html"><i class="fa fa-dashboard fa-3x"></i> Gösterge Paneli</a>
             </li>
             <li>
-                <a  href="#"><i class="fa fa-search fa-3x"></i> Kategori</a>
+                <a  href="{{route('admin_category')}}"><i class="fa fa-folder-open fa-3x"></i> Kategoriler</a>
             </li>
             <li>
                 <a  href="ui.html"><i class="fa fa-desktop fa-3x"></i> UI Elements</a>

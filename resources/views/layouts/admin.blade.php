@@ -21,7 +21,7 @@
     <div id="wrapper">
         @include('admin._navtop')
         @include('admin._navside')
-        @include('admin._content')
+        @yield('content')
 
 
     </div>
