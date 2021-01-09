@@ -8,10 +8,13 @@
 
 
             <li>
-                <a class="active-menu"  href="index.html"><i class="fa fa-dashboard fa-3x"></i> Gösterge Paneli</a>
+                <a class="active-menu"  href="{{route('admin_home')}}"><i class="fa fa-dashboard fa-3x"></i> Gösterge Paneli</a>
             </li>
             <li>
                 <a  href="{{route('admin_category')}}"><i class="fa fa-folder-open fa-3x"></i> Kategoriler</a>
+            </li>
+            <li>
+                <a  href="{{route('admin_news')}}"><i class="fa fa-paperclip fa-3x"></i> Haberler</a>
             </li>
             <li>
                 <a  href="ui.html"><i class="fa fa-desktop fa-3x"></i> UI Elements</a>

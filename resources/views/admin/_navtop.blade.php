@@ -9,6 +9,7 @@
             </button>
             <a class="navbar-brand" href="{{route('admin_home')}}">Ulag Yönetim</a>
         </div>
+        <a href="{{route('admin_news_add')}}" class="btn btn-default square-btn-adjust">Haber Ekle</a>
         <div class="info" style="color: white;
 padding: 15px 50px 5px 50px;
 float: right;
