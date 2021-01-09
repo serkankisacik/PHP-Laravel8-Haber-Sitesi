@@ -21,7 +21,7 @@
                                 <th>Haber</th>
                                 <th>Keywords</th>
                                 <th>Description</th>
-                                <th>Image</th>
+                                <th>Görsel</th>
                                 <th>Kategori</th>
                                 <th>Kullanıcı</th>
                                 <th>Detaylar</th>
@@ -39,7 +39,8 @@
                                 <td>{{$rs->title}}</td>
                                 <td>{{$rs->keywords}}</td>
                                 <td>{{$rs->description}}</td>
-                                <td>{{$rs->image}}</td>
+                                <td>@if($rs->image) <img src="{{ Storage::url($rs->image) }}" height="50px">@endif
+                                </td>
                                 <td>{{$rs->category_id}}</td>
                                 <td>{{$rs->user_id}}</td>
                                 <td>{{$rs->detail}}</td>
