@@ -41,7 +41,7 @@
                                 <td>{{$rs->status}}</td>
                                 <td>{{$rs->created_at}}</td>
                                 <td>{{$rs->updated_at}}</td>
-                                <td>Düzenle / <a href="{{route('admin_category_delete',['id'=>$rs->id])}}" onclick="return confirm('Silmek istediğinize emnin misiniz?')">Sil</a></td>
+                                <td><a href="{{route('admin_category_edit',['id'=>$rs->id])}}"> Düzenle</a> / <a href="{{route('admin_category_delete',['id'=>$rs->id])}}" onclick="return confirm('Silmek istediğinize emnin misiniz?')">Sil</a></td>
                             </tr>
                             @endforeach
                             </tbody>
