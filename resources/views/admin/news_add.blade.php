@@ -22,7 +22,7 @@
             <!-- /. ROW  -->
             <hr />
             <div class="col-md-6">
-            <form role="form" action="{{route('admin_news_store')}}" method="post" enctype="multipart/form-data">
+            <form role="form" action="{{route('admin_news_store')}}" method="post">
                 @csrf
                 <div class="form-group">
                     <label>Başlık</label>
@@ -39,14 +39,14 @@
                 </div>
                 <div class="form-group">
                     <label>Haber</label>
-                    <textarea id="summernote" name="detail"></textarea>
+                    <textarea id="summernote" name="detail"  ></textarea>
                     <script>
-                        $('#summernote').summernote({
+                        $(document).ready(function() {
+                            $('#summernote').summernote();
                         });
                     </script>
                     <p class="help-block">Haberin açıklaması.</p>
                 </div>
-
                 <div class="form-group">
                     <label>Keywords</label>
                     <input id="keywords" name="keywords" class="form-control" />
@@ -71,7 +71,7 @@
                 </div>
                 <div class="form-group">
                     <label>Haber kapak görseli</label>
-                    <input type="file" name="image" class="form-control" />
+                    <input type="file" />
                 </div>
                 <button type="submit" class="btn btn-default">Haberi ekle</button>
 

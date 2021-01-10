@@ -32,7 +32,6 @@ class NewsController extends Controller
         $data->status=$request->input('status');
         $data->user_id=Auth::id();
         $data->detail=$request->input('detail');
-        $data->image = Storage::putFile('images', $request->file('image'));
 
         $data->save();
         return redirect()->route('admin_news');
@@ -58,7 +57,6 @@ class NewsController extends Controller
         $data->status=$request->input('status');
         $data->user_id=Auth::id();
         $data->detail=$request->input('detail');
-        $data->image = Storage::putFile('images', $request->file('image'));
 
         $data->save();
         return redirect()->route('admin_news');
