@@ -21,7 +21,8 @@
                                 <th>Haber</th>
                                 <th>Keywords</th>
                                 <th>Description</th>
-                                <th>Image</th>
+                                <th>Görsel</th>
+                                <th>Galeri</th>
                                 <th>Kategori</th>
                                 <th>Kullanıcı</th>
                                 <th>Detaylar</th>
@@ -40,9 +41,10 @@
                                 <td>{{$rs->keywords}}</td>
                                 <td>{{$rs->description}}</td>
                                 <td>@if($rs->image)
-                                        <img src="{{Storage::url($rs->image)}}" height="30">
+                                        <img src="{{ \Illuminate\Support\Facades\Storage::url($rs->image) }}" height="30">
                                     @endif
                                 </td>
+                                <td><a onclick="return !window.open(this.href,'','top=50 left=100 width=1100, height=700')" href="{{route('admin_image_add',['news_id'=>$rs->id])}}"><i class="fa fa-file fa-3x"></i></a> </td>
                                 <td>{{$rs->category_id}}</td>
                                 <td>{{$rs->user_id}}</td>
                                 <td>{{$rs->detail}}</td>
@@ -51,7 +53,7 @@
                                 <td>{{$rs->created_at}}</td>
                                 <td>{{$rs->updated_at}}</td>
                                 <td><a href="{{route('admin_news_edit',['id'=>$rs->id])}}"><button class="btn btn-primary"><i class="fa fa-edit "></i>  Düzenle</button></a>
-                                    <a href="{{route('admin_news_delete',['id'=>$rs->id])}}" onclick="return confirm('Silmek istediğinize emnin misiniz?')"><button class="btn btn-danger"><i class="fa fa-pencil"></i>Sil</button></a></td>
+                                    <a href="{{route('admin_news_delete',['id'=>$rs->id])}}" onclick="return confirm('Silmek istediğinize emnin misiniz?')"><button class="btn btn-danger"><i class="fa fa-eraser"></i> Sil</button></a></td>
                             </tr>
                             @endforeach
                             </tbody>
