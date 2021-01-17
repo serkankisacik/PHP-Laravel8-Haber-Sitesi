@@ -22,60 +22,60 @@
             <!-- /. ROW  -->
             <hr />
             <div class="col-md-6">
-            <form role="form" action="{{route('admin_news_store')}}" method="post">
-                @csrf
-                <div class="form-group">
-                    <label>Başlık</label>
-                    <input id="title" name="title" class="form-control" />
-                    <p class="help-block">Haberin görünmesini istediğiniz başlık.</p>
-                </div>
-                <div class="form-group">
-                    <label>Kategori</label>
-                    <select name="parent_id" id="parent_id" class="form-control">
-                        @foreach($datalist as $rs)
-                        <option value="{{$rs->category_id}}">{{$rs->category_id}}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Haber</label>
-                    <textarea id="summernote" name="detail"  ></textarea>
-                    <script>
-                        $(document).ready(function() {
-                            $('#summernote').summernote();
-                        });
-                    </script>
-                    <p class="help-block">Haberin açıklaması.</p>
-                </div>
-                <div class="form-group">
-                    <label>Keywords</label>
-                    <input id="keywords" name="keywords" class="form-control" />
-                    <p class="help-block">Haberin arama motorlarında görünmesini istediğiniz anahtar kelimeler.</p>
-                </div>
-                <div class="form-group">
-                    <label>Description</label>
-                    <input id="description" name="description" class="form-control" />
-                    <p class="help-block">Haberin arama motorlarında görünmesini istediğiniz açıklama metni.</p>
-                </div>
-                <div class="form-group">
-                    <label>Slug</label>
-                    <input id="slug" name="slug" class="form-control" />
-                    <p class="help-block">Slug metni.</p>
-                </div>
-                <div class="form-group">
-                    <label>Durum</label>
-                    <select class="form-control">
-                        <option>Açık</option>
-                        <option>Kapalı</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Haber kapak görseli</label>
-                    <input type="file" />
-                </div>
-                <button type="submit" class="btn btn-default">Haberi ekle</button>
+                <form role="form" action="{{route('admin_news_store')}}" method="post">
+                    @csrf
+                    <div class="form-group">
+                        <label>Başlık</label>
+                        <input id="title" name="title" class="form-control" />
+                        <p class="help-block">Haberin görünmesini istediğiniz başlık.</p>
+                    </div>
+                    <div class="form-group">
+                        <label>Kategori</label>
+                        <select name="parent_id" id="parent_id" class="form-control">
+                            @foreach($datalist as $rs)
+                                <option value="{{$rs->category_id}}">{{$rs->category_id}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Haber</label>
+                        <textarea id="summernote" name="detail"  ></textarea>
+                        <script>
+                            $(document).ready(function() {
+                                $('#summernote').summernote();
+                            });
+                        </script>
+                        <p class="help-block">Haberin açıklaması.</p>
+                    </div>
+                    <div class="form-group">
+                        <label>Keywords</label>
+                        <input id="keywords" name="keywords" class="form-control" />
+                        <p class="help-block">Haberin arama motorlarında görünmesini istediğiniz anahtar kelimeler.</p>
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <input id="description" name="description" class="form-control" />
+                        <p class="help-block">Haberin arama motorlarında görünmesini istediğiniz açıklama metni.</p>
+                    </div>
+                    <div class="form-group">
+                        <label>Slug</label>
+                        <input id="slug" name="slug" class="form-control" />
+                        <p class="help-block">Slug metni.</p>
+                    </div>
+                    <div class="form-group">
+                        <label>Durum</label>
+                        <select class="form-control">
+                            <option>Açık</option>
+                            <option>Kapalı</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Haber kapak görseli</label>
+                        <input type="file" />
+                    </div>
+                    <button type="submit" class="btn btn-default">Haberi ekle</button>
 
-            </form>
+                </form>
             </div>
             <div class="col-md-6">
                 <h2> En son haberler </h2>
@@ -100,9 +100,9 @@
                             </tbody>
                         </table>
                     </div>
+                </div>
             </div>
+            <!-- /. PAGE INNER  -->
         </div>
-        <!-- /. PAGE INNER  -->
-    </div>
 
 @endsection
