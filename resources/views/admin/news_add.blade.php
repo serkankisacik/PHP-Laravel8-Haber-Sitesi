@@ -22,7 +22,7 @@
             <!-- /. ROW  -->
             <hr />
             <div class="col-md-6">
-                <form role="form" action="{{route('admin_news_store')}}" method="post">
+                <form role="form" action="{{route('admin_news_store')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label>Başlık</label>
@@ -41,8 +41,19 @@
                         <label>Haber</label>
                         <textarea id="summernote" name="detail"  ></textarea>
                         <script>
-                            $(document).ready(function() {
-                                $('#summernote').summernote();
+                            $('#summernote').summernote({
+                                placeholder: 'Haberin ayrıntılarını bu kısıma girebilirsiniz.',
+                                tabsize: 2,
+                                height: 120,
+                                toolbar: [
+                                    ['style', ['style']],
+                                    ['font', ['bold', 'underline', 'clear']],
+                                    ['color', ['color']],
+                                    ['para', ['ul', 'ol', 'paragraph']],
+                                    ['table', ['table']],
+                                    ['insert', ['link', 'picture', 'video']],
+                                    ['view', ['fullscreen', 'codeview', 'help']]
+                                ]
                             });
                         </script>
                         <p class="help-block">Haberin açıklaması.</p>
@@ -71,7 +82,7 @@
                     </div>
                     <div class="form-group">
                         <label>Haber kapak görseli</label>
-                        <input type="file" />
+                        <input type="file" name="image" class="form-control" />
                     </div>
                     <button type="submit" class="btn btn-default">Haberi ekle</button>
 

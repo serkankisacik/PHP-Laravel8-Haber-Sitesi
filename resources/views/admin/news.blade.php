@@ -39,7 +39,10 @@
                                 <td>{{$rs->title}}</td>
                                 <td>{{$rs->keywords}}</td>
                                 <td>{{$rs->description}}</td>
-                                <td>{{$rs->image}}</td>
+                                <td>@if($rs->image)
+                                        <img src="{{Storage::url($rs->image)}}" height="30">
+                                    @endif
+                                </td>
                                 <td>{{$rs->category_id}}</td>
                                 <td>{{$rs->user_id}}</td>
                                 <td>{{$rs->detail}}</td>
