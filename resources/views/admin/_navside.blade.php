@@ -17,6 +17,9 @@
                 <a  href="{{route('admin_news')}}"><i class="fa fa-paperclip fa-3x"></i> Haberler</a>
             </li>
             <li>
+                <a  href="{{route('admin_setting')}}"><i class="fa fa-cog fa-3x"></i> Ayarlar</a>
+            </li>
+            <li>
                 <a  href="ui.html"><i class="fa fa-desktop fa-3x"></i> UI Elements</a>
             </li>
             <li>
