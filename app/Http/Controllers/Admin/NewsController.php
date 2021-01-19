@@ -15,11 +15,12 @@ class NewsController extends Controller
     public function index()
     {
         $datalist=DB::table('news')->get();
+        //$data=DB::table('category')->where('votes', '=', 100);
         return view('admin.news',['datalist'=>$datalist]);
     }
     public function create()
     {
-        $datalist=DB::table('news')->get()->where('category_id',0);
+        $datalist = Category::all();
         return view('admin.news_add',['datalist'=>$datalist]);
     }
     public function store(Request $request)
@@ -59,9 +60,10 @@ class NewsController extends Controller
         $data->status=$request->input('status');
         $data->user_id=Auth::id();
         $data->detail=$request->input('detail');
-
-        $data->image= Storage::putFile('images', $request->file('image'));
-
+        if ($request->file('image')!=null)
+        {
+            $data->image= Storage::putFile('images', $request->file('image'));
+        }
         $data->save();
         return redirect()->route('admin_news');
     }

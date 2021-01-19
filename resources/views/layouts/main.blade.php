@@ -71,7 +71,6 @@
 
 
 @section('content')
-
 @show
 
 @include('home._footer')

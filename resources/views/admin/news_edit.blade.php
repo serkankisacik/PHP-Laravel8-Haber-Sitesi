@@ -31,7 +31,7 @@
                 </div>
                 <div class="form-group">
                     <label>Kategori</label>
-                    <select name="parent_id" id="parent_id" class="form-control">
+                    <select name="category_id" id="category_id" class="form-control">
                         @foreach($datalist as $rs)
                             <option value="{{$rs->id}}"@if ($rs->id==$data->category_id) selected="selected" @endif> {{$rs->title}} </option>
                         @endforeach
@@ -73,7 +73,7 @@
                 </div>
                 <div class="form-group">
                     <label>Haber kapak görseli</label>
-                    <input type="file" name="image" value="{{$data->image}}" class="form-control" />
+                    <input type="file" name="image" class="form-control" />
                     @if($data->image)
                         <img src="{{ Storage::url($data->image)}}" height="60">
                     @endif
