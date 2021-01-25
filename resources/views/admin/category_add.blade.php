@@ -22,8 +22,9 @@
                 <div class="form-group">
                     <label>Ana Kategori</label>
                     <select name="parent_id" id="parent_id" class="form-control">
+                        <option value="0" selected="selected">Ana Kategori</option>
                         @foreach($datalist as $rs)
-                        <option value="{{$rs->parent_id}}">{{$rs->title}}</option>
+                        <option value="{{$rs->id}}">{{\App\Http\Controllers\Admin\CategoryController::getParentsTree($rs, $rs->title)}}</option>
                         @endforeach
                     </select>
                 </div>

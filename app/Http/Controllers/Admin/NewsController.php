@@ -15,7 +15,8 @@ class NewsController extends Controller
     public function index()
     {
         $datalist=DB::table('news')->get();
-        //$data=DB::table('category')->where('votes', '=', 100);
+        //$data=News::with('category')->where('category_id',$category_id)->paginate(5);
+
         return view('admin.news',['datalist'=>$datalist]);
     }
     public function create()
@@ -46,7 +47,7 @@ class NewsController extends Controller
     public function edit(News $news, $id)
     {
         $data = News::find($id);
-        $datalist = Category::all();
+        $datalist = Category::with('children')->get();
         return view('admin.news_edit',['data'=>$data,'datalist'=>$datalist]);
     }
     public function update(Request $request, News $news, $id)

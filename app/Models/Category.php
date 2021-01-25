@@ -9,8 +9,18 @@ class Category extends Model
 {
     use HasFactory;
 
-    public function new()
+    public function news()
     {
         return $this->hasMany(News::class);
+    }
+
+    public function parent()
+    {
+        return $this->belongsTo(Category::class,'parent_id');
+    }
+
+    public function children()
+    {
+        return $this->hasMany(Category::class,'parent_id');
     }
 }

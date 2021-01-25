@@ -18,7 +18,8 @@
                             <thead>
                             <tr>
                                 <th>Sıra</th>
-                                <th>Kategori</th>
+                                <th>Ana Kategori</th>
+                                <th>Kategori Başlık</th>
                                 <th>Keywords</th>
                                 <th>Description</th>
                                 <th>Image</th>
@@ -33,6 +34,7 @@
                             @foreach($datalist as $rs)
                             <tr>
                                 <td>{{$rs->id}}</td>
+                                <td>{{\App\Http\Controllers\Admin\CategoryController::getParentsTree($rs, $rs->title)}}</td>
                                 <td>{{$rs->title}}</td>
                                 <td>{{$rs->keywords}}</td>
                                 <td>{{$rs->description}}</td>
