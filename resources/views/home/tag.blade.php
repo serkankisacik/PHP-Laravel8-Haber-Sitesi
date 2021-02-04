@@ -12,7 +12,7 @@
             <div class="entity_content">
                 <h1 align="center">{{$setting->title}} Künye</h1>
                 @if($setting->tag !=null)
-                    <p>{{$setting->tag}}</p>
+                    <p>{!! $setting->tag !!}</p>
                 @endif
                 @if($setting->tag == null)
                 <p class="MsoNoSpacing" style="text-align: left;"><strong><span>İmtiyaz Sahibi ve Sorumlu Editör / Concession Owner and Responsible Editor</span></strong><br />

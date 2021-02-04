@@ -31,9 +31,8 @@
                     @if($setting->logo !=null)
                         <a href="{{route('home')}}"><img src="{{ \Illuminate\Support\Facades\Storage::url($setting->logo) }}" height="100" alt="<{{$setting->title}}>"></a>
                     @endif
-
-                    <p>{{$setting->aboutus}}</p>
                 </div>
+                {{ substr($setting->aboutus, 500,150 ) }}
             </div>
             <div class="col-md-3">
                 <div class="footer_widget_title">

@@ -11,8 +11,7 @@
         <div class="container">
             <div class="entity_content">
                 <h1 align="center">{{$setting->title}} Hakkında</h1>
-                <blockquote class="pull-left">{{$setting->aboutus}}
-                </blockquote>
+                {!! $setting->aboutus !!}
             </div>
             <!-- Row -->
         </div>
