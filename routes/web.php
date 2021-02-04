@@ -71,6 +71,9 @@ Route::middleware('auth')->prefix('account')->namespace('account')->group(functi
 
 });
 
+//Route::middleware('auth')->prefix('user')->namespace('account')->group(function (){
+//    Route::get('/profile',[UserController::class,'index'])->name('userprofile');
+//}); Video 22-33
 Route::get('/admin', [\App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin_home')->middleware('auth');
 Route::get('/admin/login', [\App\Http\Controllers\Admin\HomeController::class, 'login'])->name('admin_login');
 Route::post('/admin/logincheck', [\App\Http\Controllers\Admin\HomeController::class, 'logincheck'])->name('admin_logincheck');
