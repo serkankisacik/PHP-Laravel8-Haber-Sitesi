@@ -1,3 +1,5 @@
+@php($setting=\App\Http\Controllers\HomeController::getsetting())
+@php($parentCategories= \App\Http\Controllers\HomeController::categorylist())
 <section id="subscribe_section" class="subscribe_section">
     <div class="row">
         <form action="#" method="post" class="form-horizontal">
@@ -24,58 +26,42 @@
         <hr class="footer-top">
         <div class="row">
             <div class="col-md-3">
-                <div class="footer_widget_title"><h3><a href="category.html" target="_self">Ulag Hakkında</a></h3></div>
+                <div class="footer_widget_title"><h3><a href="category.html" target="_self">{{$setting->title}}</a></h3></div>
                 <div class="logo footer-logo">
-                    <a title="fontanero" href="index.html">
-                        <img src="{{asset('assets')}}/img/tech_about.jpg" alt="technews">
-                    </a>
+                    @if($setting->logo !=null)
+                        <a href="{{route('home')}}"><img src="{{ \Illuminate\Support\Facades\Storage::url($setting->logo) }}" height="100" alt="<{{$setting->title}}>"></a>
+                    @endif
 
-                    <p>Competently conceptualize go forward testing procedures and B2B expertise. Phosfluorescently
-                        cultivate principle-centered methods.of empowerment through fully researched.</p>
+                    <p>{{$setting->aboutus}}</p>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="footer_widget_title">
-                    <h3><a href="category.html" target="_self">Discover</a></h3>
+                    <h3><a href="category.html" target="_self">Bağlantılar</a></h3>
                 </div>
                 <div class="row">
                     <div class="col-xs-4">
                         <ul class="list-unstyled left">
-                            <li><a href="#">Mobile</a></li>
-                            <li><a href="#">Tablet</a></li>
-                            <li><a href="#">Gadgets</a></li>
-                            <li><a href="#">Design</a></li>
-                            <li><a href="#">Camera</a></li>
-                            <li><a href="#">Apps</a></li>
-                            <li><a href="#">Login</a></li>
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Membership</a></li>
-                            <li><a href="#">Blog</a></li>
-                            <li><a href="#">Job</a></li>
-                            <li><a href="#">SiteMap</a></li>
+                            @foreach($parentCategories as $rs)
+                                <li class="dropdown m-menu-fw"><a href="{{$rs->slug}}" data-toggle="dropdown" class="dropdown-toggle">{{$rs->title}}
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
                     <div class="col-xs-8">
                         <ul class="list-unstyled">
-                            <li><a href="#">Contact Us</a></li>
-                            <li><a href="#">Newsletter Alerts</a></li>
-                            <li><a href="#">Podcast</a></li>
-                            <li><a href="#">Sms Subscription</a></li>
-                            <li><a href="#">Advertisement Policy</a></li>
-                            <li><a href="#">Report Technical issue</a></li>
-                            <li><a href="#">Complaints and Corrections</a></li>
-                            <li><a href="#">Terms and Conditions</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Cookie Policy</a></li>
-                            <li><a href="#">Securedrop</a></li>
-                            <li><a href="#">Archives</a></li>
+                            <li><a href="{{route('aboutus')}}">Hakkımızda</a></li>
+                            <li><a href="{{route('contact')}}">İletişim</a></li>
+                            <li><a href="{{route('faq')}}">SSS</a></li>
+                            <li><a href="{{route('tag')}}">Künye</a></li>
+                            <li><a href="{{route('references')}}">Referanslar</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="footer_widget_title">
-                    <h3><a href="#" target="_self">Editor Picks</a></h3>
+                    <h3><a href="#" target="_self">Editorün Seçimi</a></h3>
                 </div>
                 <div class="media">
                     <div class="media-left">
@@ -134,7 +120,7 @@
             </div>
             <div class="col-md-3">
                 <div class="footer_widget_title">
-                    <h3><a href="category.html" target="_self">Tech Photos</a></h3>
+                    <h3><a href="category.html" target="_self">Son Fotoğraflar</a></h3>
                 </div>
                 <div class="widget_photos">
                     <img class="img-thumbnail" src="{{asset('assets')}}/img/tech_photo1.jpg" alt="Tech Photos">
@@ -161,19 +147,26 @@
                 <div class="footer">
                     <div class="col-sm-3">
                         <div class="social">
-                            <a class="icons-sm fb-ic"><i class="fa fa-facebook"></i></a>
-                            <!--Twitter-->
-                            <a class="icons-sm tw-ic"><i class="fa fa-twitter"></i></a>
-                            <!--Google +-->
-                            <a class="icons-sm inst-ic"><i class="fa fa-instagram"> </i></a>
-                            <!--Linkedin-->
-                            <a class="icons-sm tmb-ic"><i class="fa fa-tumblr"> </i></a>
-                            <!--Pinterest-->
-                            <a class="icons-sm rss-ic"><i class="fa fa-rss"> </i></a>
+
+                            @if($setting->facebook !=null)
+                                <a class="icons-sm fb-ic" href="{{$setting->facebook}}" target="_blank"><i class="fa fa-facebook"></i></a>
+                            @endif
+                        <!--Twitter-->
+                            @if($setting->twitter !=null)
+                                <a class="icons-sm fb-ic" href="{{$setting->twitter}}" target="_blank"><i class="fa fa-twitter"></i></a>
+                            @endif
+                        <!--Instagram +-->
+                            @if($setting->instagram !=null)
+                                <a class="icons-sm fb-ic" href="{{$setting->instagram}}" target="_blank"><i class="fa fa-instagram"></i></a>
+                            @endif
+                        <!--Youtube-->
+                            @if($setting->youtube !=null)
+                                <a class="icons-sm fb-ic" href="{{$setting->youtube}}" target="_blank"><i class="fa fa-youtube"></i></a>
+                            @endif
                         </div>
                     </div>
                     <div class="col-sm-6">
-                        <p>&copy; Copyright 2020-Ulag News . Design by: <a href="https://serkankisacik.com/">Serkan</a> </p>
+                        <p>&copy; Copyright 2021-Ulag News {{$setting->company}} . Design by: <a href="https://serkankisacik.com/">Serkan</a> </p>
                     </div>
                     <div class="col-sm-3">
                         <p>En Güncel Haberler</p>

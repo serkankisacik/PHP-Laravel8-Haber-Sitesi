@@ -1,5 +1,4 @@
 @php($parentCategories= \App\Http\Controllers\HomeController::categorylist())
-
 <ul class="nav navbar-nav main-nav">
     @foreach($parentCategories as $rs)
         <li class="dropdown m-menu-fw"><a href="#" data-toggle="dropdown" class="dropdown-toggle">{{$rs->title}}
@@ -8,7 +7,7 @@
                 <li>
                     <div class="m-menu-content">
                         @if(count($rs->children))
-                            @include('home/categorytree', ['children'=>$rs->children])
+                                    @include('home/categorytree', ['children'=>$rs->children])
                         @endif
                     </div>
                 </li>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Setting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use function PHPUnit\Framework\isEmpty;
 
 class SettingController extends Controller
@@ -103,7 +104,7 @@ class SettingController extends Controller
         $data->contact=$request->input('contact');
         $data->references=$request->input('references');
         $data->status=$request->input('status');
-        //data->image= Storage::putFile('images', $request->file('logo'));
+        $data->logo= Storage::putFile('logo', $request->file('logo'));
         $data->save();
         return redirect()->route('admin_setting');
     }

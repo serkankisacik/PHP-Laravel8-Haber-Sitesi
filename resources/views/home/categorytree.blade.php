@@ -1,11 +1,12 @@
 @foreach($children as $subcategory)
+
     <ul class="col-sm-3">
-        @if(count($subcategory->children))
-
-                    <li><a href="#">{{$subcategory->title}}</a></li>
-
-        @else
-            <li><a href="#">{{$subcategory->title}}</a></li>
-        @endif
+        <li class="dropdown-header">
+            @if(count($subcategory->children))
+                <a href="#">{{$subcategory->title}}</a>
+            @else
+                <a href="#">{{$subcategory->title}}</a>
+            @endif
+        </li>
     </ul>
 @endforeach

@@ -41,7 +41,7 @@
                                 <td>{{$rs->keywords}}</td>
                                 <td>{{$rs->description}}</td>
                                 <td>@if($rs->image)
-                                        <img src="{{ \Illuminate\Support\Facades\Storage::url($rs->image) }}" height="30">
+                                        <img src="{{ \Illuminate\Support\Facades\Storage::url($rs->image) }}" height="50">
                                     @endif
                                 </td>
                                 <td><a onclick="return !window.open(this.href,'','top=50 left=100 width=1100, height=700')" href="{{route('admin_image_add',['news_id'=>$rs->id])}}"><i class="fa fa-file fa-3x"></i></a> </td>

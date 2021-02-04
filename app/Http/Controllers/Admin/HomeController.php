@@ -29,7 +29,7 @@ class HomeController extends Controller
         }
 
         return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
+            'email' => 'Yanlış giriş yaptınız tekrar deneyiniz.',
         ]);
         }
         else{

@@ -1,11 +1,12 @@
 @extends('layouts.main')
 
-@section('title', 'Ulag News - Yurttan Dünyadan Haberler')
+@section('title', $setting->title)
+@section('pagetitle', $setting->description)
 
 @section('description')
-    Haber ve son dakika haberleri, güncel haberler, magazin, spor ve ekonomideki gelişmeler, yerel ve dünya haberleri Ulag'da.
+{{$setting->description}}
 @endsection
-@section('keywords', 'Ulag, news, Haber')
+@section('keywords', $setting->keywords)
 @section('content')
     @include('home._featured')
     <section id="category_section" class="category_section">

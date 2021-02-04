@@ -75,7 +75,7 @@
                     <label>Haber kapak görseli</label>
                     <input type="file" name="image" class="form-control" />
                     @if($data->image)
-                        <img src="{{ Storage::url($data->image)}}" height="60">
+                        <img src="{{ Storage::url($data->image)}}" height="150">
                     @endif
                 </div>
                 <button class="btn btn-default"><i class=" fa fa-refresh "></i> Kaydet</button>

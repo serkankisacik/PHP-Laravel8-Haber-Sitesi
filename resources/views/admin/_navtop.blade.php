@@ -15,7 +15,7 @@ padding: 15px 50px 5px 50px;
 float: right;
 font-size: 16px;">
             @auth
-            {{\Illuminate\Support\Facades\Auth::user()->name}} | Son Erişim : 30 May 2014 &nbsp;
+            {{\Illuminate\Support\Facades\Auth::user()->name}} | Son Erişim :&nbsp;{{\Illuminate\Support\Facades\Auth::user()->updated_at}}
             <a href="{{route('admin_logout')}}" class="btn btn-danger square-btn-adjust">Çıkış yap</a>
             @endauth
         </div>

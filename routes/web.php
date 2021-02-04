@@ -20,7 +20,10 @@ Route::get('/', function () {
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/aboutus', [HomeController::class, 'aboutus'])->name('aboutus');
-
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
+Route::get('/tag', [HomeController::class, 'tag'])->name('tag');
+Route::get('/references', [HomeController::class, 'references'])->name('references');
 
 
 Route::middleware('auth')->prefix('admin')->group(function (){

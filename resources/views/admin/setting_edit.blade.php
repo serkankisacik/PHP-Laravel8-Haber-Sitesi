@@ -52,7 +52,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Site Logosu</label>
-                                <input type="file" name="image" value="{{$data->logo}}" class="form-control" />
+                                <input type="file" name="logo" class="form-control" />
                                 @if($data->logo)
                                     <img src="{{ Storage::url($data->logo)}}" height="60">
                                 @endif

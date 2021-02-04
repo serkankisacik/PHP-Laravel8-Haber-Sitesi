@@ -30,15 +30,21 @@
                                             </span>
                                     <!-- Time -->
                                     <div class="social">
-                                        <a class="icons-sm fb-ic"><i class="fa fa-facebook"></i></a>
+                                        @if($setting->facebook !=null)
+                                            <a class="icons-sm fb-ic" href="{{$setting->facebook}}" target="_blank"><i class="fa fa-facebook"></i></a>
+                                        @endif
                                         <!--Twitter-->
-                                        <a class="icons-sm tw-ic"><i class="fa fa-twitter"></i></a>
-                                        <!--Google +-->
-                                        <a class="icons-sm inst-ic"><i class="fa fa-instagram"> </i></a>
-                                        <!--Linkedin-->
-                                        <a class="icons-sm tmb-ic"><i class="fa fa-tumblr"> </i></a>
-                                        <!--Pinterest-->
-                                        <a class="icons-sm rss-ic"><i class="fa fa-rss"> </i></a>
+                                            @if($setting->twitter !=null)
+                                                <a class="icons-sm fb-ic" href="{{$setting->twitter}}" target="_blank"><i class="fa fa-twitter"></i></a>
+                                            @endif
+                                        <!--Instagram +-->
+                                            @if($setting->instagram !=null)
+                                                <a class="icons-sm fb-ic" href="{{$setting->instagram}}" target="_blank"><i class="fa fa-instagram"></i></a>
+                                            @endif
+                                        <!--Youtube-->
+                                            @if($setting->youtube !=null)
+                                                <a class="icons-sm fb-ic" href="{{$setting->youtube}}" target="_blank"><i class="fa fa-youtube"></i></a>
+                                            @endif
                                     </div>
                                     <!-- Top Social Section -->
                                 </div>
@@ -46,7 +52,9 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="logo">
-                                    <a href="index.html"><img src="{{asset('assets')}}/img/logo.png" alt="Tech NewsLogo"></a>
+                                    @if($setting->logo !=null)
+                                        <a href="{{route('home')}}"><img src="{{ \Illuminate\Support\Facades\Storage::url($setting->logo) }}" height="100" alt="<{{$setting->title}}>"></a>
+                                    @endif
                                 </div>
                                 <!-- Logo Section -->
                             </div>
@@ -55,9 +63,13 @@
                                     <ul class="nav navbar-nav">
                                         @if (Route::has('login'))
                                                 @auth
-                                                    <li><a href="{{ url('/dashboard') }}">Admin Paneli</a></li>
+                                                    @if(\Illuminate\Support\Facades\Auth::user()->profile_photo_path != null)
+                                                    <img src="{{ \Illuminate\Support\Facades\Storage::url(\Illuminate\Support\Facades\Auth::user()->profile_photo_path) }}" height="30" alt="{{\Illuminate\Support\Facades\Auth::user()->name}}"></a>
+                                                @endif
+                                                <p><b>{{\Illuminate\Support\Facades\Auth::user()->name}}</b> Olarak Giriş Yapıldı.</p>
+                                                    <li><a href="{{ url('admin') }}">Kontrol Paneli</a></li>
                                                 @else
-                                                    <li><a href="{{ route('login') }}">Oturum Aç</a></li>
+                                                    <li><a href="{{ route('admin_login') }}">Oturum Aç</a></li>
 
                                                     @if (Route::has('register'))
                                                     <li><a href="{{ route('register') }}">Kayıt Ol</a></li>

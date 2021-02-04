@@ -57,6 +57,9 @@
                             <button type="submit" class="btn btn-default">Oturum Aç</button>
                         </div>
                     </div>
+                    @error('email')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </form>
                     <p align="center">Yada</p>
                     <button class="btn btn-primary"><i class="fa fa-facebook "></i> Facebook İle Giriş</button>

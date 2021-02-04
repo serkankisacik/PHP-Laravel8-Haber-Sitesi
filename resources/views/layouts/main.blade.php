@@ -7,7 +7,7 @@
     <meta name="description" content="@yield('description')">
     <meta name="keywords" content="@yield('keywords')">
     <meta name="author" content="Serkan Kısacık">
-    <title>@yield('title')</title>
+    <title>@yield('title') | @yield('pagetitle')</title>
 
     <!-- favicon -->
     <link href="{{asset('assets')}}/img/favicon.png" rel=icon>
