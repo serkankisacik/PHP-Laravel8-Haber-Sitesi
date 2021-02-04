@@ -40,6 +40,10 @@
                         </li>
                         <li class=""><a href="#referanslar" data-toggle="tab">Referanslar</a>
                         </li>
+                        <li class=""><a href="#faqs" data-toggle="tab">Sıkça Sorulan Sorular</a>
+                        </li>
+                        <li class=""><a href="#tags" data-toggle="tab">Künye</a>
+                        </li>
                     </ul>
 
                     <div class="tab-content">
@@ -52,7 +56,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Site Logosu</label>
-                                <input type="file" name="logo" class="form-control" />
+                                <input type="file" name="logo" class="form-control" value="{{ Storage::url($data->logo)}}" />
                                 @if($data->logo)
                                     <img src="{{ Storage::url($data->logo)}}" height="60">
                                 @endif
@@ -135,7 +139,6 @@
                             <h4>Hakkımızda</h4>
                             <div class="form-group">
                                 <textarea value="{{$data->aboutus}}" id="aboutus" name="aboutus"  >{{$data->aboutus}}</textarea>
-
                             </div>
                         </div>
                         <div class="tab-pane fade" id="iletisim">
@@ -151,25 +154,48 @@
                                 <textarea value="{{$data->references}}" id="references" name="references"  >{{$data->references}}</textarea>
                             </div>
                         </div>
+                        <div class="tab-pane fade" id="faqs">
+                            <h4>Sıkça Sorulan Sorular</h4>
+                            <div class="form-group">
+                                <textarea value="{{$data->faq}}" id="faq" name="faq"  >{{$data->faq}}</textarea>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="tags">
+                            <h4>Künye</h4>
+                            <div class="form-group">
+                                <textarea value="{{$data->tag}}" id="tag" name="tag"  >{{$data->tag}}</textarea>
+                            </div>
+                        </div>
+                        <script>
+                            $('#aboutus').summernote({
+                                tabsize: 2,
+                                height: 120,
+                                focus: true
+                            });
+                            $('#contact').summernote({
+                                tabsize: 2,
+                                height: 120,
+                                focus: true
+                            });
+                            $('#references').summernote({
+                                tabsize: 2,
+                                height: 120,
+                                focus: true
+                            });
+                            $('#faq').summernote({
+                                tabsize: 2,
+                                height: 120,
+                                focus: true
+                            });
+                            $('#tag').summernote({
+                                tabsize: 2,
+                                height: 120,
+                                focus: true
+                            });
+                        </script>
                     </div>
                 </div>
-                <script>
-                    $('#aboutus').summernote({
-                        tabsize: 2,
-                        height: 120,
-                        focus: true
-                    });
-                    $('#contact').summernote({
-                        tabsize: 2,
-                        height: 120,
-                        focus: true
-                    });
-                    $('#references').summernote({
-                        tabsize: 2,
-                        height: 120,
-                        focus: true
-                    });
-                </script>
+
                 <button class="btn btn-default"><i class=" fa fa-refresh "></i> Kaydet</button>
 
             </form>

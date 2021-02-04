@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('title', $setting->title )
-
+@section('pagetitle', "Referanslar" )
 @section('description')
 {{$setting->description}}
 @endsection

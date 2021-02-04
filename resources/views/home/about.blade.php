@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('title', $setting->title )
-
+@section('pagetitle', "Hakkında" )
 @section('description')
 {{$setting->description}}
 @endsection

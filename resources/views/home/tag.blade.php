@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('title', $setting->title )
-
+@section('pagetitle', "Künye" )
 @section('description')
 {{$setting->description}}
 @endsection
@@ -15,7 +15,7 @@
                     <p>{{$setting->tag}}</p>
                 @endif
                 @if($setting->tag == null)
-                s<p class="MsoNoSpacing" style="text-align: left;"><strong><span>İmtiyaz Sahibi ve Sorumlu Editör / Concession Owner and Responsible Editor</span></strong><br />
+                <p class="MsoNoSpacing" style="text-align: left;"><strong><span>İmtiyaz Sahibi ve Sorumlu Editör / Concession Owner and Responsible Editor</span></strong><br />
                         – </p>
 
                     <p class="MsoNoSpacing" style="text-align: left;"><strong><span>Genel Yayın Yönetmeni / Editor in Chief</span></strong><br />

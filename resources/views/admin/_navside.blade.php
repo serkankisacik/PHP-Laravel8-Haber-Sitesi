@@ -4,6 +4,7 @@
         <ul class="nav" id="main-menu">
             <li class="text-center">
                 <img src="{{ \Illuminate\Support\Facades\Storage::url(\Illuminate\Support\Facades\Auth::user()->profile_photo_path) }}" class="user-image img-responsive"/>
+                {{\Illuminate\Support\Facades\Auth::user()->name}}
             </li>
 
 

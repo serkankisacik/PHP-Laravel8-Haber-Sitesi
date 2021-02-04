@@ -103,8 +103,14 @@ class SettingController extends Controller
         $data->aboutus=$request->input('aboutus');
         $data->contact=$request->input('contact');
         $data->references=$request->input('references');
+        $data->faq=$request->input('faq');
+        $data->tag=$request->input('tag');
         $data->status=$request->input('status');
-        $data->logo= Storage::putFile('logo', $request->file('logo'));
+        if ($request->file('logo')!=null)
+        {
+            $data->logo= Storage::putFile('logo', $request->file('logo'));
+        }
+
         $data->save();
         return redirect()->route('admin_setting');
     }
