@@ -3,7 +3,7 @@
     <div class="sidebar-collapse">
         <ul class="nav" id="main-menu">
             <li class="text-center">
-                <img src="{{asset('assetsdash')}}/img/find_user.png" class="user-image img-responsive"/>
+                <img src="{{ \Illuminate\Support\Facades\Storage::url(\Illuminate\Support\Facades\Auth::user()->profile_photo_path) }}" class="user-image img-responsive"/>
             </li>
 
 
