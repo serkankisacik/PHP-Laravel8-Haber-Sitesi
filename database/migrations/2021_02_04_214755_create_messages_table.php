@@ -23,7 +23,7 @@ class CreateMessagesTable extends Migration
             $table->string('note',100)->nullable();
             $table->string('ip',20)->nullable();
             $table->string('file',75)->nullable();
-            $table->string('status', 5)->nullable()->default('False');
+            $table->string('status', 5)->nullable()->default('New');
             $table->timestamps();
         });
     }

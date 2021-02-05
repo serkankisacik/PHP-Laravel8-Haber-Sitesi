@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -52,6 +53,15 @@ Route::middleware('auth')->prefix('admin')->group(function (){
         Route::post('update/{id}',[NewsController::class,'update'])->name('admin_news_update');
         Route::get('delete/{id}',[NewsController::class,'destroy'])->name('admin_news_delete');
         Route::get('show',[NewsController::class,'show'])->name('admin_news_show');
+    });
+
+    #Messages
+    Route::prefix('message')->group(function (){
+        Route::get('/',[MessageController::class,'index'])->name('admin_message');
+        Route::get('edit/{id}',[MessageController::class,'edit'])->name('admin_message_edit');
+        Route::post('update/{id}',[MessageController::class,'update'])->name('admin_message_update');
+        Route::get('delete/{id}',[MessageController::class,'destroy'])->name('admin_message_delete');
+        Route::get('show',[MessageController::class,'show'])->name('admin_message_show');
     });
 
     #Image Gallerys
