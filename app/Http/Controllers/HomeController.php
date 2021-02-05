@@ -62,7 +62,7 @@ class HomeController extends Controller
         $data->message=$request->input('message');
         if ($request->file('file')!=null)
         {
-            $data->logo= Storage::putFile('contact', $request->file('file'));
+            $data->file= Storage::putFile('contact', $request->file('file'));
         }
         $data->save();
         return redirect()->route('contact')->with('success','Mesajınız Kaydedilmiştir.');

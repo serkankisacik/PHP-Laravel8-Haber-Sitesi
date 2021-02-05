@@ -8,7 +8,8 @@
 @endsection
 @section('keywords', $setting->keywords)
 @section('content')
-    @include('home._featured')
+
+    @include('home._featuredslider')
     <section id="category_section" class="category_section">
         <div class="container">
             <div class="row">
