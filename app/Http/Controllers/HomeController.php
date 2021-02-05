@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Message;
+use App\Models\News;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -21,8 +22,22 @@ class HomeController extends Controller
     }
     public function index()
     {
+
         $setting = Setting::first();
-        return view('home.index',['setting'=>$setting]);
+        $slider = News::select('id', 'title','image','category_id','created_at','user_id', 'slug')->limit(3)->get();
+        $data=[
+            'setting'=>$setting,
+            'slider'=>$slider,
+            'page'=>'home'
+        ];
+        return view('home.index',$data);
+    }
+    public function news($id,$slug)
+    {
+        $data = News::find($id);
+        print_r($data);
+        exit();
+
     }
 
     public function aboutus()

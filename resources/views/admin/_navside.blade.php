@@ -21,6 +21,9 @@
                 <a  href="{{route('admin_setting')}}"><i class="fa fa-cog fa-3x"></i> Ayarlar</a>
             </li>
             <li>
+                <a  href="{{route('admin_message')}}"><i class="fa fa-edit fa-3x"></i> İletişim Formları </a>
+            </li>
+            <li>
                 <a  href="ui.html"><i class="fa fa-desktop fa-3x"></i> UI Elements</a>
             </li>
             <li>
@@ -32,7 +35,7 @@
             <li  >
                 <a  href="table.html"><i class="fa fa-table fa-3x"></i> Table Examples</a>
             </li>
-            <li  >
+            <li>
                 <a  href="form.html"><i class="fa fa-edit fa-3x"></i> Forms </a>
             </li>
 

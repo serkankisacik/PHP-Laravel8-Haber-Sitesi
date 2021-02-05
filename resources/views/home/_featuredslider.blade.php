@@ -1,9 +1,6 @@
 @section('css')
     <style>
-        * {box-sizing: border-box}
-        body {font-family: Verdana, sans-serif; margin:0}
-        .mySlides {display: none}
-        img {vertical-align: middle;}
+        * {box-sizing:border-box}
 
         /* Slideshow container */
         .slideshow-container {
@@ -12,14 +9,19 @@
             margin: auto;
         }
 
+        /* Hide the images by default */
+        .mySlides {
+            display: none;
+        }
+
         /* Next & previous buttons */
         .prev, .next {
             cursor: pointer;
             position: absolute;
             top: 50%;
             width: auto;
-            padding: 16px;
             margin-top: -22px;
+            padding: 16px;
             color: white;
             font-weight: bold;
             font-size: 18px;
@@ -92,11 +94,6 @@
             from {opacity: .4}
             to {opacity: 1}
         }
-
-        /* On smaller screens, decrease text size */
-        @media only screen and (max-width: 300px) {
-            .prev, .next,.text {font-size: 11px}
-        }
     </style>
 @endsection
 
@@ -106,21 +103,23 @@
             <div class="col-md-7">
                 <!-- Slideshow container -->
                 <div class="slideshow-container">
-
+                        @foreach($slider as $rs)
                     <!-- Full-width images with number and caption text -->
                     <div class="mySlides fade">
-                        <div class="numbertext">1 / 3</div>
-                        <img src="{{asset('assets')}}/img/feature-static2.jpg" style="width:100%">
+
+                        <div class="numbertext">{{$rs->id}} / 3</div>
+                        <img src="{{\Illuminate\Support\Facades\Storage::url($rs->image)}}" style="width:100%">
                         <div class="feature_article_inner">
                             <div class="tag_lg red"><a href="category.html">Son Dakika</a></div>
                             <div class="feature_article_title">
-                                <h1><a href="single.html" target="_self">Chevrolet car-saving technology delivers </a></h1>
+                                <h1><a href="single.html" target="_self">{{$rs->title}} </a></h1>
                             </div>
                             <!-- feature_article_title -->
 
-                            <div class="feature_article_date"><a href="#" target="_self">Stive Clark</a>,<a href="#"
-                                                                                                            target="_self">Aug
-                                    4, 2015</a></div>
+                            <div class="feature_article_date">
+                                <a href="#" target="_self">Kategori {{$rs->category_id}}</a>
+                                <a href="#" target="_self">Kullanıcı {{$rs->user_id}}</a>
+                                <a href="#"target="_self">Yayınlanma {{$rs->created_at}}</a></div>
                             <!-- feature_article_date -->
 
                             <div class="feature_article_content">
@@ -134,37 +133,21 @@
                                 <span><i class="fa fa-comments-o"></i><a href="#">4</a>Comments</span>
                             </div>
                             <!-- article_social -->
-
+                            <p class="divider"><a href="{{route('news',['id' => $rs->id, 'slug' => $rs->slug ])}}">Devamı&nbsp;&raquo;</a></p>
                         </div>
                     </div>
-
-                    <div class="mySlides fade">
-                        <div class="numbertext">2 / 3</div>
-                        <img src="{{asset('assets')}}/img/feature-static2.jpg" style="width:100%">
-                        <div class="text">Caption Two</div>
-                    </div>
-
-                    <div class="mySlides fade">
-                        <div class="numbertext">3 / 3</div>
-                        <img src="{{asset('assets')}}/img/feature-static2.jpg" style="width:100%">
-                        <div class="text">Caption Three</div>
-                    </div>
-
+                        @endforeach
                     <!-- Next and previous buttons -->
                     <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
                     <a class="next" onclick="plusSlides(1)">&#10095;</a>
                 </div>
                 <br>
-
                 <!-- The dots/circles -->
                 <div style="text-align:center">
                     <span class="dot" onclick="currentSlide(1)"></span>
                     <span class="dot" onclick="currentSlide(2)"></span>
                     <span class="dot" onclick="currentSlide(3)"></span>
                 </div>
-
-
-
             </div>
             <!-- col-md-7 -->
 
