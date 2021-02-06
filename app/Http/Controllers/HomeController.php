@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Image;
 use App\Models\Message;
 use App\Models\News;
 use App\Models\Setting;
@@ -50,8 +51,10 @@ class HomeController extends Controller
     public function news($id,$slug)
     {
         $setting = Setting::first();
+        $datalist = Image::where('news_id',$id)->get();
         $data = News::find($id);
-        return view('home.post',['data'=>$data,'setting'=>$setting ]);
+        $kategori = News::select('id', 'title','image','category_id','created_at','user_id', 'slug')->limit(4)->inRandomOrder()->get();
+        return view('home.post',['data'=>$data,'setting'=>$setting,'kategori'=>$kategori, 'datalist'=>$datalist ]);
     }
     public function category($id,$slug)
     {

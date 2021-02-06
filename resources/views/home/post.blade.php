@@ -1,8 +1,109 @@
 @extends('layouts.main')
 
 @section('title', $setting->title )
-@section('pagetitle', "Haber detay ")
+@section('pagetitle', "$data->title ")
 @section('keywords', $setting->keywords)
+@section('css')
+    <style>
+        * {box-sizing: border-box}
+        body {font-family: Verdana, sans-serif; margin:0}
+        .mySlides {display: none}
+        img {vertical-align: middle;}
+
+        /* Slideshow container */
+        .slideshow-container {
+            max-width: 1000px;
+            position: relative;
+            margin: auto;
+        }
+
+        /* Next & previous buttons */
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+        }
+
+        /* Position the "next button" to the right */
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        /* On hover, add a black background color with a little bit see-through */
+        .prev:hover, .next:hover {
+            background-color: rgba(0,0,0,0.8);
+        }
+
+        /* Caption text */
+        .text {
+            color: #f2f2f2;
+            font-size: 15px;
+            padding: 8px 12px;
+            position: absolute;
+            bottom: 8px;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Number text (1/3 etc) */
+        .numbertext {
+            color: #f2f2f2;
+            font-size: 12px;
+            padding: 8px 12px;
+            position: absolute;
+            top: 0;
+        }
+
+        /* The dots/bullets/indicators */
+        .dot {
+            cursor: pointer;
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+
+        .active, .dot:hover {
+            background-color: #717171;
+        }
+
+        /* Fading animation */
+        .fade {
+            -webkit-animation-name: fade;
+            -webkit-animation-duration: 1.5s;
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+
+        @-webkit-keyframes fade {
+            from {opacity: .4}
+            to {opacity: 1}
+        }
+
+        @keyframes fade {
+            from {opacity: .4}
+            to {opacity: 1}
+        }
+
+        /* On smaller screens, decrease text size */
+        @media only screen and (max-width: 300px) {
+            .prev, .next,.text {font-size: 11px}
+        }
+    </style>
+@endsection
 @section('content')
     <section id="category_section" class="category_section">
         <div class="container">
@@ -10,11 +111,11 @@
                 <div class="col-md-8">
                     <div class="entity_wrapper">
                         <div class="entity_title">
-                            <h1><a href="#">Chevrolet car-saving technology delivers 'superhuman' sight when you need it most</a></h1>
+                            <h1><a href="#">{{$data->title}}</a></h1>
                         </div>
                         <!-- entity_title -->
 
-                        <div class="entity_meta"><a href="#" target="_self">10Aug- 2015</a>, by: <a href="#" target="_self">Eric joan</a>
+                        <div class="entity_meta"><a href="#" target="_self">{{$data->user_id}}. Kullanıcı Tarafından <a href="#" target="_self">{{$data->created_at}}</a> tarihinde yayınlandı.</a>
                         </div>
                         <!-- entity_meta -->
 
@@ -27,10 +128,15 @@
                         </div>
                         <!-- entity_rating -->
 
+                        <div class="entity_thumb">
+                            <img class="img-responsive" src="{{\Illuminate\Support\Facades\Storage::url($data->image)}}" alt="feature-top">
+                        </div>
+                        <!-- entity_thumb -->
+
                         <div class="entity_social">
                             <a href="#" class="icons-sm sh-ic">
                                 <i class="fa fa-share-alt"></i>
-                                <b>424</b> <span class="share_ic">Shares</span>
+                                <b>424</b> <span class="share_ic">Paylaş</span>
                             </a>
                             <a href="#" class="icons-sm fb-ic"><i class="fa fa-facebook"></i></a>
                             <!--Twitter-->
@@ -43,20 +149,33 @@
                             <a href="#" class="icons-sm rss-ic"><i class="fa fa-rss"> </i></a>
                         </div>
                         <!-- entity_social -->
-
                         <div class="entity_thumb">
-                            <img class="img-responsive" src="assets/img/category_img_top.jpg" alt="feature-top">
+                            @if($datalist !=null)
+                                <div class="slideshow-container">
+                                    @foreach($datalist as $rs)
+                                        <div class="mySlides fade">
+                                            <img src="{{\Illuminate\Support\Facades\Storage::url($rs->image)}}" alt="{{$rs->alt}}" style="width:100%">
+                                            <div class="text">{{$rs->title}}</div>
+                                        </div>
+                                    @endforeach
+                                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+                                </div>
+                                <br>
+
+                                <div style="text-align:center">
+                                    <span class="dot" onclick="currentSlide(1)"></span>
+                                    <span class="dot" onclick="currentSlide(2)"></span>
+                                    <span class="dot" onclick="currentSlide(3)"></span>
+                                </div>
+                            @endif
                         </div>
-                        <!-- entity_thumb -->
+                        <!-- entity_slider olacak-->
 
                         <div class="entity_content">
                             <p>
-                                But I must explain to you how all this mistaken idea of denouncing pleasure and praising
-                                pain was born and I will give you a complete account of the system, and expound the
-                                actual teachings of the great explorer of the truth, the master-builder of human
-                                happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure,
-                                but because those who do not know how to pursue pleasure rationally encounter
-                                consequences that are extremely painful.
+                                {!! $data->detail !!}
                             </p>
 
                             <p>
@@ -66,7 +185,7 @@
                                 undertakes laborious physical exercise, except to obtain some advantage from it?
                             </p>
 
-                            <blockquote class="pull-left">But I must explain to you how all this mistaken idea of denouncing pleasure
+                            <blockquote class="pull-left">{{$data->description}}
                             </blockquote>
                             <p> But who has any right to find fault with a man who chooses to enjoy a pleasure that has
                                 no annoying consequences, or one who avoids a pain that produces no resultant pleasure?
@@ -116,23 +235,24 @@
 
                     <div class="related_news">
                         <div class="entity_inner__title header_purple">
-                            <h2><a href="#">Related News</a></h2>
+                            <h2><a href="#">Alakalı haberler</a></h2>
                         </div>
                         <!-- entity_title -->
 
                         <div class="row">
+                            @foreach($kategori as $rs)
                             <div class="col-md-6">
+
                                 <div class="media">
                                     <div class="media-left">
-                                        <a href="#"><img class="media-object" src="assets/img/cat-mobi-sm1.jpg"
-                                                         alt="Generic placeholder image"></a>
+                                        <a href="#"><img class="media-object" height="150px" width="150px" src="{{\Illuminate\Support\Facades\Storage::url($rs->image)}}"
+                                                         alt="{{$rs->title}}"></a>
                                     </div>
                                     <div class="media-body">
-                                        <span class="tag purple"><a href="category.html" target="_self">Mobile</a></span>
+                                        <span class="tag purple"><a href="category.html" target="_self">{{$rs->category_id}}</a></span>
 
-                                        <h3 class="media-heading"><a href="single.html" target="_self">Apple launches photo-centric wrist
-                                                watch for Android</a></h3>
-                                        <span class="media-date"><a href="#">10Aug- 2015</a>,  by: <a href="#">Eric joan</a></span>
+                                        <h3 class="media-heading"><a href="{{route('news',['id' => $rs->id, 'slug' => $rs->slug ])}}" target="_self">{{$rs->title}}</a></h3>
+                                        <span class="media-date"><a href="#">{{$rs->created_at}}</a>,  <a href="#">{{$rs->user_id}} Tarafından</a></span>
 
                                         <div class="media_social">
                                             <span><a href="#"><i class="fa fa-share-alt"></i>424</a> Shares</span>
@@ -140,82 +260,29 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="media">
-                                    <div class="media-left">
-                                        <a href="#"><img class="media-object" src="assets/img/cat-mobi-sm3.jpg"
-                                                         alt="Generic placeholder image"></a>
-                                    </div>
-                                    <div class="media-body">
-                                        <span class="tag purple"><a href="category.html" target="_self">Mobile</a></span>
 
-                                        <h3 class="media-heading"><a href="single.html" target="_self">The Portable Charger or data
-                                                cable</a></h3>
-                                        <span class="media-date"><a href="#">10Aug- 2015</a>,  by: <a href="#">Eric joan</a></span>
-
-                                        <div class="media_social">
-                                            <span><a href="#"><i class="fa fa-share-alt"></i>424</a> Shares</span>
-                                            <span><a href="#"><i class="fa fa-comments-o"></i>4</a> Comments</span>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="media">
-                                    <div class="media-left">
-                                        <a href="#"><img class="media-object" src="assets/img/cat-mobi-sm2.jpg"
-                                                         alt="Generic placeholder image"></a>
-                                    </div>
-                                    <div class="media-body">
-                                        <span class="tag purple"><a href="category.html" target="_self">Mobile</a></span>
-
-                                        <h3 class="media-heading"><a href="single.html" target="_self">Iphone 6 launches white & Grey
-                                                colors handset</a></h3>
-                                        <span class="media-date"><a href="#">10Aug- 2015</a>,  by: <a href="#">Eric joan</a></span>
-
-                                        <div class="media_social">
-                                            <span><a href="#"><i class="fa fa-share-alt"></i>424</a> Shares</span>
-                                            <span><a href="#"><i class="fa fa-comments-o"></i>4</a> Comments</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="media">
-                                    <div class="media-left">
-                                        <a href="#"><img class="media-object" src="assets/img/cat-mobi-sm4.jpg"
-                                                         alt="Generic placeholder image"></a>
-                                    </div>
-                                    <div class="media-body">
-                                        <span class="tag purple"><a href="category.html" target="_self">Mobile</a></span>
-                                        <a href="single.html" target="_self"><h3 class="media-heading">Fully new look slim handset
-                                                like</h3></a>
-                                        <span class="media-date"><a href="#">10Aug- 2015</a>,  by: <a href="#">Eric joan</a></span>
-
-                                        <div class="media_social">
-                                            <span><a href="#"><i class="fa fa-share-alt"></i>424</a> Shares</span>
-                                            <span><a href="#"><i class="fa fa-comments-o"></i>4</a> Comments</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                     <!-- Related news -->
 
                     <div class="widget_advertisement">
-                        <img class="img-responsive" src="assets/img/category_advertisement.jpg" alt="feature-top">
+                        <img class="img-responsive" src="{{asset('assets')}}/img/category_advertisement.jpg" alt="feature-top">
                     </div>
                     <!--Advertisement-->
 
                     <div class="readers_comment">
                         <div class="entity_inner__title header_purple">
-                            <h2>Readers Comment</h2>
+                            <h2>Okuyucular Yorumu</h2>
                         </div>
                         <!-- entity_title -->
 
                         <div class="media">
                             <div class="media-left">
                                 <a href="#">
-                                    <img alt="64x64" class="media-object" data-src="assets/img/reader_img1.jpg"
-                                         src="assets/img/reader_img1.jpg" data-holder-rendered="true">
+                                    <img alt="64x64" class="media-object" data-src="{{asset('assets')}}/img/reader_img1.jpg"
+                                         src="{{asset('assets')}}/img/reader_img1.jpg" data-holder-rendered="true">
                                 </a>
                             </div>
                             <div class="media-body">
@@ -231,8 +298,8 @@
                                 <div class="media">
                                     <div class="media-left">
                                         <a href="#">
-                                            <img alt="64x64" class="media-object" data-src="assets/img/reader_img2.jpg"
-                                                 src="assets/img/reader_img2.jpg" data-holder-rendered="true">
+                                            <img alt="64x64" class="media-object" data-src="{{asset('assets')}}/img/reader_img2.jpg"
+                                                 src="{{asset('assets')}}/img/reader_img2.jpg" data-holder-rendered="true">
                                         </a>
                                     </div>
                                     <div class="media-body">
@@ -256,8 +323,8 @@
                         <div class="media">
                             <div class="media-left">
                                 <a href="#">
-                                    <img alt="64x64" class="media-object" data-src="assets/img/reader_img3.jpg"
-                                         src="assets/img/reader_img3.jpg" data-holder-rendered="true">
+                                    <img alt="64x64" class="media-object" data-src="{{asset('assets')}}/img/reader_img3.jpg"
+                                         src="{{asset('assets')}}/img/reader_img3.jpg" data-holder-rendered="true">
                                 </a>
                             </div>
                             <div class="media-body">
@@ -277,13 +344,13 @@
                     <!--Readers Comment-->
 
                     <div class="widget_advertisement">
-                        <img class="img-responsive" src="assets/img/category_advertisement.jpg" alt="feature-top">
+                        <img class="img-responsive" src="{{asset('assets')}}/img/category_advertisement.jpg" alt="feature-top">
                     </div>
                     <!--Advertisement-->
 
                     <div class="entity_comments">
                         <div class="entity_inner__title header_black">
-                            <h2>Add a Comment</h2>
+                            <h2>Yorum ekle</h2>
                         </div>
                         <!--Entity Title -->
 
@@ -328,5 +395,36 @@
         </div>
         <!-- Container -->
     </section>
+@endsection
+@section('footerjs')
+    <script>
+        var slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            var dots = document.getElementsByClassName("dot");
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";
+            dots[slideIndex-1].className += " active";
+        }
+    </script>
+
 @endsection
 
