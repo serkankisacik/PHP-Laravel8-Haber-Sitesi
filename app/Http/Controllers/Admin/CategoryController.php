@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
@@ -20,7 +21,7 @@ class CategoryController extends Controller
             return $title;
         }
         $parent = Category::find($category->parent_id);
-        $title= $parent->title . ' >> '. $title;
+        $title=$parent->title . ' >> ' . $title;
 
         return CategoryController::getParentsTree($parent,$title);
     }
@@ -78,6 +79,11 @@ class CategoryController extends Controller
         $data->description=$request->input('description');
         $data->slug=$request->input('slug');
         $data->status=$request->input('status');
+
+        if ($request->file('image')!=null)
+        {
+            $data->image= Storage::putFile('images', $request->file('image'));
+        }
         $data->save();
         return redirect()->route('admin_category');
 

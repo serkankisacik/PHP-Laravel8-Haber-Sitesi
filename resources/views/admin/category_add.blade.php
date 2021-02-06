@@ -39,10 +39,6 @@
                     <p class="help-block">Kategorinin arama motorlarında görünmesini istediğiniz açıklama metni.</p>
                 </div>
                 <div class="form-group">
-                    <label>Kategori görseli</label>
-                    <input type="file" />
-                </div>
-                <div class="form-group">
                     <label>Slug</label>
                     <input id="slug" name="slug" class="form-control" />
                     <p class="help-block">Slug metni.</p>
@@ -53,10 +49,6 @@
                         <option>Açık</option>
                         <option>Kapalı</option>
                     </select>
-                </div>
-                <div class="form-group">
-                    <label>Kategori görseli</label>
-                    <input type="file" />
                 </div>
                 <button type="submit" class="btn btn-default">Kategori ekle</button>
                 <button type="reset" class="btn btn-primary">Reset Button</button>

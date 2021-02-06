@@ -38,8 +38,11 @@
                     <p class="help-block">Kategorinin arama motorlarında görünmesini istediğiniz açıklama metni.</p>
                 </div>
                 <div class="form-group">
-                    <label>Kategori görseli</label>
-                    <input type="file" />
+                    <label>Kategori kapak görseli</label>
+                    <input type="file" name="image" class="form-control" />
+                    @if($data->image)
+                        <img src="{{\Illuminate\Support\Facades\Storage::url($data->image)}}" height="150">
+                    @endif
                 </div>
                 <div class="form-group">
                     <label>Slug</label>
@@ -53,10 +56,6 @@
                         <option>Açık</option>
                         <option>Kapalı</option>
                     </select>
-                </div>
-                <div class="form-group">
-                    <label>Kategori görseli</label>
-                    <input type="file" />
                 </div>
                 <button type="submit" class="btn btn-default">Değişiklikleri kaydet</button>
 

@@ -32,6 +32,7 @@ Route::get('/tag', [HomeController::class, 'tag'])->name('tag');
 Route::get('/references', [HomeController::class, 'references'])->name('references');
 Route::post('/sendmessage', [HomeController::class, 'sendmessage'])->name('sendmessage');
 Route::get('/news/{id}/{slug}', [HomeController::class, 'news'])->name('news');
+Route::get('/category/{id}/{slug}', [HomeController::class, 'category'])->name('category');
 
 
 Route::middleware('auth')->prefix('admin')->group(function (){

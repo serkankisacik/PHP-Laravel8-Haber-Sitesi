@@ -24,10 +24,25 @@ class HomeController extends Controller
     {
 
         $setting = Setting::first();
+        $categorylist = Category::select('title', 'slug', 'id')->get();
         $slider = News::select('id', 'title','image','category_id','created_at','user_id', 'slug')->limit(3)->get();
+        $kategoribir = News::select('id', 'title','image','category_id','created_at','user_id', 'slug')->limit(4)->where('category_id', '=', 1)->get();
+        $kategoriiki = News::select('id', 'detail', 'title','image','category_id','created_at','user_id', 'slug')->limit(2)->orderByDesc('created_at')->where('category_id', '=', 2)->get();
+        $kategoriuc = News::select('id', 'title','image','category_id','created_at','user_id', 'slug')->limit(4)->where('category_id', '=', 3)->get();
+        $kategoridort = News::select('id', 'title','image','category_id','created_at','user_id', 'slug')->limit(3)->where('category_id', '=', 4)->get();
+        $kategoribes = News::select('id', 'title','image','category_id','created_at','user_id', 'slug')->limit(3)->where('category_id', '=', 5)->get();
+
+
         $data=[
             'setting'=>$setting,
             'slider'=>$slider,
+            'categorylist'=>$categorylist,
+            'kategoribir'=>$kategoribir,
+            'kategoriiki'=>$kategoriiki,
+            'kategoriuc'=>$kategoriuc,
+            'kategoridort'=>$kategoridort,
+            'kategoribes'=>$kategoribes,
+
             'page'=>'home'
         ];
         return view('home.index',$data);
@@ -37,7 +52,13 @@ class HomeController extends Controller
         $data = News::find($id);
         print_r($data);
         exit();
-
+    }
+    public function category($id,$slug)
+    {
+        $setting = Setting::first();
+        $datalist = News::where('category_id',$id)->get();
+        $data = Category::find($id);
+        return view('home.category',['data'=>$data, 'datalist'=>$datalist,'setting'=>$setting ]);
     }
 
     public function aboutus()

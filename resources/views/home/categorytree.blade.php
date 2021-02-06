@@ -5,7 +5,7 @@
             @if(count($subcategory->children))
                 <a href="#">{{$subcategory->title}}</a>
             @else
-                <a href="#">{{$subcategory->title}}</a>
+                <a href="{{route('category',['id'=>$subcategory->id, 'slug'=>$subcategory->slug])}}">{{$subcategory->title}}</a>
             @endif
         </li>
     </ul>
