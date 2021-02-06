@@ -38,36 +38,28 @@
     @yield('css')
     @yield('headerjs')
 </head>
-
 <body id="page-top" data-spy="scroll" data-target=".navbar">
-@include('home._header')
-
-
-<div class="navigation-section">
-    <nav class="navbar m-menu navbar-default">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                        data-target="#navbar-collapse-1"><span class="sr-only">Toggle navigation</span> <span
-                        class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
-                </button>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="#navbar-collapse-1">
-                @include('home._menu')
-            </div>
-            <!-- .navbar-collapse -->
+<div id="main-wrapper">
+    <!-- Page Preloader -->
+    <div id="preloader">
+        <div id="status">
+            <div class="status-mes"></div>
         </div>
-        <!-- .container -->
-    </nav>
-    <!-- .nav -->
-</div>
-<!-- .navigation-section -->
-</div>
-<!-- .container -->
-</section>
-<!-- header_section_wrapper -->
+    </div>
+    <!-- preloader -->
+
+    <div class="uc-mobile-menu-pusher">
+        <div class="content-wrapper">
+            <section id="header_section_wrapper" class="header_section_wrapper">
+                <div class="container">
+                    @include('home._header')
+                    @include('home._menu')
+                </div>
+            </section>
+        </div>
+    </div>
+
+
 
 
 @section('content')

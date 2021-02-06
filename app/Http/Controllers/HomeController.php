@@ -49,15 +49,15 @@ class HomeController extends Controller
     }
     public function news($id,$slug)
     {
+        $setting = Setting::first();
         $data = News::find($id);
-        print_r($data);
-        exit();
+        return view('home.post',['data'=>$data,'setting'=>$setting ]);
     }
     public function category($id,$slug)
     {
         $setting = Setting::first();
         $datalist = News::where('category_id',$id)->get();
-        $data = Category::find($id);
+        $data = Category::find($id)->with('children')->get();
         return view('home.category',['data'=>$data, 'datalist'=>$datalist,'setting'=>$setting ]);
     }
 

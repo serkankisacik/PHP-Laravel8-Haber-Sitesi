@@ -1,23 +1,10 @@
-<div id="main-wrapper">
-    <!-- Page Preloader -->
-    <div id="preloader">
-        <div id="status">
-            <div class="status-mes"></div>
-        </div>
-    </div>
-    <!-- preloader -->
 
-    <div class="uc-mobile-menu-pusher">
-        <div class="content-wrapper">
-            <section id="header_section_wrapper" class="header_section_wrapper">
-                <div class="container">
                     <div class="header-section">
                         <div class="row">
                             <div class="col-md-5">
                                 <div class="left_section">
                                     <ul class="nav-cta hidden-xs">
-                                        <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle"><i
-                                                    class="fa fa-search"></i></a>
+                                        <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="fa fa-search"></i></a>
                                             <ul class="dropdown-menu">
                                                 <li>
                                                     <div class="head-search">
