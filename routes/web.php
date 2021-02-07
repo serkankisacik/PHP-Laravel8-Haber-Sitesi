@@ -33,6 +33,8 @@ Route::get('/references', [HomeController::class, 'references'])->name('referenc
 Route::post('/sendmessage', [HomeController::class, 'sendmessage'])->name('sendmessage');
 Route::get('/news/{id}/{slug}', [HomeController::class, 'news'])->name('news');
 Route::get('/category/{id}/{slug}', [HomeController::class, 'category'])->name('category');
+Route::post('/getnews',[HomeController::class,'getnews'])->name('getnews');
+Route::get('/postlist/{search}', [HomeController::class, 'postlist'])->name('postlist');
 
 
 Route::middleware('auth')->prefix('admin')->group(function (){

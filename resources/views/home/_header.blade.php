@@ -8,16 +8,17 @@
                                             <ul class="dropdown-menu">
                                                 <li>
                                                     <div class="head-search">
-                                                        <form role="form">
+                                                        <form action="{{route('getnews')}}" method="post">
+                                                            @csrf
                                                             <!-- Input Group -->
                                                             <div class="input-group">
-                                                                <input type="text" class="form-control"
-                                                                       placeholder="Birşeyler yaz"> <span class="input-group-btn">
-                                                                            <button type="submit"
-                                                                                    class="btn btn-primary">Arama
-                                                                            </button>
-                                                                        </span></div>
+                                                                @livewire('search')
+                                                                <span class="input-group-btn">
+                                                                    <button type="submit" class="btn btn-primary">Arama</button>
+                                                                </span>
+                                                            </div>
                                                         </form>
+                                                        @livewireScripts
                                                     </div>
                                                 </li>
                                             </ul>

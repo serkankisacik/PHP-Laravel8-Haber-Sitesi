@@ -107,6 +107,31 @@ class HomeController extends Controller
         return redirect()->route('contact')->with('success','Mesajınız Kaydedilmiştir.');
 
     }
+    public function getnews(Request $request)
+    {
+        $search=$request->input('search');
+        $count = News::where('title','like','%'.$search.'%')->get()->count();
+        if ($count==1)
+        {
+            $data = News::where('title','like','%'.$search.'%')->first();
+            return redirect()->route('news',['id'=>$data->id,'slug'=>$data->slug] );
+        }
+        else
+        {
+            return redirect()->route('postlist',['search'=>$search]);
+        }
+
+        /* old
+        $data = News::where('title',$request->input('search'))->first();
+        return redirect()->route('news',['id'=>$data->id,'slug'=>$data->slug]);
+        */
+    }
+
+    public function postlist($search){
+        $datalist = News::where('title','like','%'.$search.'%')->get();
+        $setting = Setting::first();
+        return view('home.search_post',['search'=>$search,'datalist'=>$datalist,'setting'=>$setting,'data'=>$datalist]);
+    }
 }
 
 
