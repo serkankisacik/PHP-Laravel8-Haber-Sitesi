@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('title', $setting->title )
-@section('pagetitle', $search ."Sonuçları ")
+@section('pagetitle', $search ." Sonuçları ")
 @section('keywords', $setting->keywords)
 @section('content')
     <section id="category_section" class="category_section">

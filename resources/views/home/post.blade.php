@@ -285,10 +285,11 @@
                                          src="{{asset('assets')}}/img/reader_img1.jpg" data-holder-rendered="true">
                                 </a>
                             </div>
+                            @foreach($reviews as $rs)
                             <div class="media-body">
-                                <h2 class="media-heading"><a href="#">Sr. Ryan</a></h2>
-                                But who has any right to find fault with a man who chooses to enjoy a pleasure that has
-                                no annoying consequences, or one who avoids a pain that produces no resultant pleasure?
+                                <h2 class="media-heading"><a href="#">{{$rs->user->name}}</a></h2>
+                                <p>{{$rs->subject}}</p>
+                                {{$rs->review}}
 
                                 <div class="entity_vote">
                                     <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></a>
@@ -316,7 +317,7 @@
                                     </div>
                                 </div>
                             </div>
-
+                            @endforeach
                         </div>
                         <!-- media end -->
 
@@ -353,23 +354,7 @@
                             <h2>Yorum ekle</h2>
                         </div>
                         <!--Entity Title -->
-
-                        <div class="entity_comment_from">
-                            <form>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="inputName" placeholder="Name">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="inputEmail" placeholder="Email">
-                                </div>
-                                <div class="form-group comment">
-                                    <textarea class="form-control" id="inputComment" placeholder="Comment"></textarea>
-                                </div>
-
-                                <button type="submit" class="btn btn-submit red">Submit</button>
-                            </form>
-                        </div>
-                        <!--Entity Comments From -->
+                        @livewire('review',['id'=>$data->id])
 
                     </div>
                     <!--Entity Comments -->

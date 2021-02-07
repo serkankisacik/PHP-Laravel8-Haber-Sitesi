@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Livewire\Review;
 use App\Models\Category;
 use App\Models\Image;
 use App\Models\Message;
@@ -53,15 +54,16 @@ class HomeController extends Controller
         $setting = Setting::first();
         $datalist = Image::where('news_id',$id)->get();
         $data = News::find($id);
+        $reviews = Review::where('news_id',$id)->get();
         $kategori = News::select('id', 'title','image','category_id','created_at','user_id', 'slug')->limit(4)->inRandomOrder()->get();
-        return view('home.post',['data'=>$data,'setting'=>$setting,'kategori'=>$kategori, 'datalist'=>$datalist ]);
+        return view('home.post',['data'=>$data,'setting'=>$setting,'kategori'=>$kategori, 'datalist'=>$datalist, 'reviews'=>$reviews  ]);
     }
     public function category($id,$slug)
     {
         $setting = Setting::first();
         $datalist = News::where('category_id',$id)->get();
         $data = Category::find($id)->with('children')->get();
-        return view('home.category',['data'=>$data, 'datalist'=>$datalist,'setting'=>$setting ]);
+        return view('home.category',['data'=>$data, 'datalist'=>$datalist,'setting'=>$setting,]);
     }
 
     public function aboutus()
@@ -131,6 +133,12 @@ class HomeController extends Controller
         $datalist = News::where('title','like','%'.$search.'%')->get();
         $setting = Setting::first();
         return view('home.search_post',['search'=>$search,'datalist'=>$datalist,'setting'=>$setting,'data'=>$datalist]);
+    }
+    public static function countreview($id){
+        return Review::where('news_id',$id)->count();
+    }
+    public static function avrgreviews($id){
+        return Review::where('news_id',$id)->average('rate');
     }
 }
 

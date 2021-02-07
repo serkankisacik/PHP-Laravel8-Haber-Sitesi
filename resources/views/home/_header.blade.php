@@ -18,7 +18,9 @@
                                                                 </span>
                                                             </div>
                                                         </form>
-                                                        @livewireScripts
+                                                        @section('footerjs')
+                                                            @livewireScripts
+                                                        @endsection
                                                     </div>
                                                 </li>
                                             </ul>
