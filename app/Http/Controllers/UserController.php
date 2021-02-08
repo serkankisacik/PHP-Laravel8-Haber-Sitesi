@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Review;
 use App\Models\Setting;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -83,5 +85,15 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         //
+    }
+    public function myreviews(){
+        $setting = Setting::first();
+        $datalist = Review::where('user_id', '=', Auth::user()->id)->get();
+        return view('home.user_reviews',['datalist'=>$datalist,'setting'=>$setting]);
+    }
+    public function destroymyreivew(Review $review,$id){
+        $data = Review::find($id);
+        $data->delete();
+        return redirect()->back->with('success', 'Yorumunuz silindi');
     }
 }

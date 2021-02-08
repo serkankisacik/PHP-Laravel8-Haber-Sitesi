@@ -24,7 +24,7 @@
                 <a  href="{{route('admin_message')}}"><i class="fa fa-edit fa-3x"></i> İletişim Formları </a>
             </li>
             <li>
-                <a  href="ui.html"><i class="fa fa-desktop fa-3x"></i> UI Elements</a>
+                <a  href="{{route('admin_review')}}"><i class="fa fa-comment fa-3x"></i> Yorumlar </a>
             </li>
             <li>
                 <a  href="tab-panel.html"><i class="fa fa-qrcode fa-3x"></i> Tabs & Panels</a>

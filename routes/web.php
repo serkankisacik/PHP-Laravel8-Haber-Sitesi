@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\Admin\NewsController;
+use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\HomeController;
@@ -69,7 +70,7 @@ Route::middleware('auth')->prefix('admin')->group(function (){
         Route::get('show',[MessageController::class,'show'])->name('admin_message_show');
     });
 
-    #Image Gallerys
+    #Image Gallery
     Route::prefix('image')->group(function (){
         Route::get('create/{news_id}',[ImageController::class,'create'])->name('admin_image_add');
         Route::post('store/{news_id}',[ImageController::class,'store'])->name('admin_image_store');
@@ -77,12 +78,23 @@ Route::middleware('auth')->prefix('admin')->group(function (){
         Route::get('show',[ImageController::class,'show'])->name('admin_image_show');
     });
 
+    #Review
+    Route::prefix('review')->group(function (){
+        Route::get('/',[ReviewController::class,'index'])->name('admin_review');
+        Route::post('update/{id}',[ReviewController::class,'update'])->name('admin_review_update');
+        Route::get('delete/{id}',[ReviewController::class,'destroy'])->name('admin_review_delete');
+        Route::get('show/{id}',[ReviewController::class,'show'])->name('admin_review_show');
+    });
+
+
     #Setting
     Route::get('setting', [SettingController::class, 'index'])->name('admin_setting');
     Route::post('/setting/update', [SettingController::class, 'update'])->name('admin_setting_update');
 });
 Route::middleware('auth')->prefix('account')->namespace('account')->group(function (){
     Route::get('/',[UserController::class,'index'])->name('myprofile');
+    Route::get('/myreviews',[UserController::class,'myreviews'])->name('myreviews');
+    Route::get('/destroymyreivew/{id}',[UserController::class,'destroymyreview'])->name('user_review_delete');
 
 });
 

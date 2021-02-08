@@ -100,8 +100,8 @@
                                                 <i class="fa fa-angle-down"></i></button>
                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                                                 <li><a href="{{route('myprofile')}}">Profil </a></li>
-                                                <li><a href="#">Çıkış yap</a></li>
-                                                <li><a href="#">Çıkış yap</a></li>
+                                                <li><a href="#">Yazılarım</a></li>
+                                                <li><a href="{{route('myreviews')}}">Yorumlarım</a></li>
                                                 <li><a href="{{route('admin_logout')}}">Çıkış yap</a></li>
 
                                             </ul>

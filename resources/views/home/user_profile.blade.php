@@ -8,7 +8,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
-                    @include('profile.show')
+                    Livewire paneli bozuk
                 </div>
                 <!-- Left Section -->
 

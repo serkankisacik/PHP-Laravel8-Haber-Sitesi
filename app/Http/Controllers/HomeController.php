@@ -54,9 +54,17 @@ class HomeController extends Controller
         $setting = Setting::first();
         $datalist = Image::where('news_id',$id)->get();
         $data = News::find($id);
-        $reviews = Review::where('news_id',$id)->get();
+        $reviews = \App\Models\Review::select('news_id', 'user_id', 'subject','review' )->where('news_id', '=', $id)->get();
         $kategori = News::select('id', 'title','image','category_id','created_at','user_id', 'slug')->limit(4)->inRandomOrder()->get();
-        return view('home.post',['data'=>$data,'setting'=>$setting,'kategori'=>$kategori, 'datalist'=>$datalist, 'reviews'=>$reviews  ]);
+        $datapaket=[
+            'data'=>$data,
+            'setting'=>$setting,
+            'kategori'=>$kategori,
+            'datalist'=>$datalist,
+            'reviews'=>$reviews,
+            'page'=>'home'
+        ];
+        return view('home.post',$datapaket);
     }
     public function category($id,$slug)
     {
@@ -135,10 +143,10 @@ class HomeController extends Controller
         return view('home.search_post',['search'=>$search,'datalist'=>$datalist,'setting'=>$setting,'data'=>$datalist]);
     }
     public static function countreview($id){
-        return Review::where('news_id',$id)->count();
+        return \App\Models\Review::where('news_id',$id)->count();
     }
     public static function avrgreviews($id){
-        return Review::where('news_id',$id)->average('rate');
+        return \App\Models\Review::where('news_id',$id)->average('rate');
     }
 }
 

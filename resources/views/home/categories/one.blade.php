@@ -39,6 +39,9 @@
         <div class="category_article_wrapper">
             <div class="row">
                 @foreach($kategoribir as $rs)
+                    @php
+                        $countreview = \App\Http\Controllers\HomeController::countreview($rs->id);
+                    @endphp
                 <div class="col-md-6">
 
                     <div class="media">
@@ -49,11 +52,12 @@
                             <span class="tag purple">Gündem</span>
 
                             <h3 class="media-heading"><a href="{{route('news',['id' => $rs->id, 'slug' => $rs->slug ])}}" target="_self">{{$rs->title}}</a></h3>
-                            <span class="media-date"><a href="#">{{$rs->created_at}}</a>,  <a href="#"> {{$rs->user_id}}. Kullanıcı</a></span>
+                            <span><a href="#"> {{$rs->user->name}}</a> Tarafından</span><br>
+                            <span class="media-date"><a href="#">{{$rs->created_at}}</a></span><br>
 
                             <div class="media_social">
                                 <span><a href="#"><i class="fa fa-share-alt"></i>424</a> Shares</span>
-                                <span><a href="{{route('news',['id' => $rs->id, 'slug' => $rs->slug ])}}"><i class="fa fa-comments-o"></i>4</a> Yorum</span>
+                                <span><a href="{{route('news',['id' => $rs->id, 'slug' => $rs->slug ])}}"><i class="fa fa-comments-o"></i> {{$countreview}} </a> Yorum</span>
                             </div>
                         </div>
                     </div>

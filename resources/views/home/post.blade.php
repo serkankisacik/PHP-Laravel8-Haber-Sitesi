@@ -9,14 +9,12 @@
         body {font-family: Verdana, sans-serif; margin:0}
         .mySlides {display: none}
         img {vertical-align: middle;}
-
         /* Slideshow container */
         .slideshow-container {
             max-width: 1000px;
             position: relative;
             margin: auto;
         }
-
         /* Next & previous buttons */
         .prev, .next {
             cursor: pointer;
@@ -32,18 +30,15 @@
             border-radius: 0 3px 3px 0;
             user-select: none;
         }
-
         /* Position the "next button" to the right */
         .next {
             right: 0;
             border-radius: 3px 0 0 3px;
         }
-
         /* On hover, add a black background color with a little bit see-through */
         .prev:hover, .next:hover {
             background-color: rgba(0,0,0,0.8);
         }
-
         /* Caption text */
         .text {
             color: #f2f2f2;
@@ -54,7 +49,6 @@
             width: 100%;
             text-align: center;
         }
-
         /* Number text (1/3 etc) */
         .numbertext {
             color: #f2f2f2;
@@ -63,7 +57,6 @@
             position: absolute;
             top: 0;
         }
-
         /* The dots/bullets/indicators */
         .dot {
             cursor: pointer;
@@ -75,11 +68,9 @@
             display: inline-block;
             transition: background-color 0.6s ease;
         }
-
         .active, .dot:hover {
             background-color: #717171;
         }
-
         /* Fading animation */
         .fade {
             -webkit-animation-name: fade;
@@ -87,17 +78,14 @@
             animation-name: fade;
             animation-duration: 1.5s;
         }
-
         @-webkit-keyframes fade {
             from {opacity: .4}
             to {opacity: 1}
         }
-
         @keyframes fade {
             from {opacity: .4}
             to {opacity: 1}
         }
-
         /* On smaller screens, decrease text size */
         @media only screen and (max-width: 300px) {
             .prev, .next,.text {font-size: 11px}
@@ -114,17 +102,16 @@
                             <h1><a href="#">{{$data->title}}</a></h1>
                         </div>
                         <!-- entity_title -->
-
+                        @php
+                            $avgrev = \App\Http\Controllers\HomeController::avrgreviews($data->id);
+                            $countreview = \App\Http\Controllers\HomeController::countreview($data->id);
+                        @endphp
                         <div class="entity_meta"><a href="#" target="_self">{{$data->user_id}}. Kullanıcı Tarafından <a href="#" target="_self">{{$data->created_at}}</a> tarihinde yayınlandı.</a>
                         </div>
                         <!-- entity_meta -->
 
                         <div class="entity_rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-half-full"></i>
+                            Değerlendirme: {{$countreview}} <i class="fa fa-star"></i>/ {{$avgrev}}
                         </div>
                         <!-- entity_rating -->
 
@@ -223,7 +210,7 @@
 
                             <div class="entity_social">
                                 <span><i class="fa fa-share-alt"></i>424 <a href="#">Shares</a> </span>
-                                <span><i class="fa fa-comments-o"></i>4 <a href="#">Comments</a> </span>
+                                <span><i class="fa fa-comments-o"></i> {{$countreview}}  <a href="#">Yorum</a> </span>
                             </div>
                             <!-- entity_social -->
 
@@ -241,27 +228,27 @@
 
                         <div class="row">
                             @foreach($kategori as $rs)
-                            <div class="col-md-6">
+                                <div class="col-md-6">
 
-                                <div class="media">
-                                    <div class="media-left">
-                                        <a href="#"><img class="media-object" height="150px" width="150px" src="{{\Illuminate\Support\Facades\Storage::url($rs->image)}}"
-                                                         alt="{{$rs->title}}"></a>
-                                    </div>
-                                    <div class="media-body">
-                                        <span class="tag purple"><a href="category.html" target="_self">{{$rs->category_id}}</a></span>
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <a href="#"><img class="media-object" height="150px" width="150px" src="{{\Illuminate\Support\Facades\Storage::url($rs->image)}}"
+                                                             alt="{{$rs->title}}"></a>
+                                        </div>
+                                        <div class="media-body">
+                                            <span class="tag purple"><a href="category.html" target="_self">{{$rs->category_id}}</a></span>
 
-                                        <h3 class="media-heading"><a href="{{route('news',['id' => $rs->id, 'slug' => $rs->slug ])}}" target="_self">{{$rs->title}}</a></h3>
-                                        <span class="media-date"><a href="#">{{$rs->created_at}}</a>,  <a href="#">{{$rs->user_id}} Tarafından</a></span>
+                                            <h3 class="media-heading"><a href="{{route('news',['id' => $rs->id, 'slug' => $rs->slug ])}}" target="_self">{{$rs->title}}</a></h3>
+                                            <span class="media-date"><a href="#">{{$rs->created_at}}</a>,  <a href="#">{{$rs->user_id}} Tarafından</a></span>
 
-                                        <div class="media_social">
-                                            <span><a href="#"><i class="fa fa-share-alt"></i>424</a> Shares</span>
-                                            <span><a href="#"><i class="fa fa-comments-o"></i>4</a> Comments</span>
+                                            <div class="media_social">
+                                                <span><a href="#"><i class="fa fa-share-alt"></i>424</a> Shares</span>
+                                                <span><a href="#"><i class="fa fa-comments-o"></i>4</a> Comments</span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                            </div>
+                                </div>
                             @endforeach
                         </div>
                     </div>
@@ -277,7 +264,7 @@
                             <h2>Okuyucular Yorumu</h2>
                         </div>
                         <!-- entity_title -->
-
+                        @foreach($reviews as $rs)
                         <div class="media">
                             <div class="media-left">
                                 <a href="#">
@@ -285,62 +272,24 @@
                                          src="{{asset('assets')}}/img/reader_img1.jpg" data-holder-rendered="true">
                                 </a>
                             </div>
-                            @foreach($reviews as $rs)
-                            <div class="media-body">
-                                <h2 class="media-heading"><a href="#">{{$rs->user->name}}</a></h2>
-                                <p>{{$rs->subject}}</p>
-                                {{$rs->review}}
 
-                                <div class="entity_vote">
-                                    <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></a>
-                                    <a href="#"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></a>
-                                    <a href="#"><span class="reply_ic">Reply </span></a>
-                                </div>
-                                <div class="media">
-                                    <div class="media-left">
-                                        <a href="#">
-                                            <img alt="64x64" class="media-object" data-src="{{asset('assets')}}/img/reader_img2.jpg"
-                                                 src="{{asset('assets')}}/img/reader_img2.jpg" data-holder-rendered="true">
-                                        </a>
+                                <div class="media-body">
+                                    <h2 class="media-heading"><a href="#">{{$rs->user->name}}</a></h2>
+                                    <H3>{{$rs->subject}}</H3>
+                                    <P>{{$rs->review}}</P>
+
+                                    <div class="entity_vote">
+                                        <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></a>
+                                        <a href="#"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></a>
+                                        <a href="#"><span class="reply_ic">Reply </span></a>
                                     </div>
-                                    <div class="media-body">
-                                        <h2 class="media-heading"><a href="#">Admin</a></h2>
-                                        But who has any right to find fault with a man who chooses to enjoy a pleasure
-                                        that has no annoying consequences, or one who avoids a pain that produces no
-                                        resultant pleasure?
-
-                                        <div class="entity_vote">
-                                            <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></a>
-                                            <a href="#"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></a>
-                                            <a href="#"><span class="reply_ic">Reply </span></a>
-                                        </div>
+                                    <div class="media">
                                     </div>
                                 </div>
-                            </div>
-                            @endforeach
+
                         </div>
                         <!-- media end -->
-
-                        <div class="media">
-                            <div class="media-left">
-                                <a href="#">
-                                    <img alt="64x64" class="media-object" data-src="{{asset('assets')}}/img/reader_img3.jpg"
-                                         src="{{asset('assets')}}/img/reader_img3.jpg" data-holder-rendered="true">
-                                </a>
-                            </div>
-                            <div class="media-body">
-                                <h2 class="media-heading"><a href="#">S. Joshep</a></h2>
-                                But who has any right to find fault with a man who chooses to enjoy a pleasure that has
-                                no annoying consequences, or one who avoids a pain that produces no resultant pleasure?
-
-                                <div class="entity_vote">
-                                    <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></a>
-                                    <a href="#"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></a>
-                                    <a href="#"><span class="reply_ic">Reply </span></a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- media end -->
+                        @endforeach
                     </div>
                     <!--Readers Comment-->
 
@@ -354,8 +303,9 @@
                             <h2>Yorum ekle</h2>
                         </div>
                         <!--Entity Title -->
-                        @livewire('review',['id'=>$data->id])
-
+                        <div class="entity_comment_from">
+                        @livewire('review',['id' => 1])
+                        </div>
                     </div>
                     <!--Entity Comments -->
 
@@ -385,15 +335,12 @@
     <script>
         var slideIndex = 1;
         showSlides(slideIndex);
-
         function plusSlides(n) {
             showSlides(slideIndex += n);
         }
-
         function currentSlide(n) {
             showSlides(slideIndex = n);
         }
-
         function showSlides(n) {
             var i;
             var slides = document.getElementsByClassName("mySlides");
@@ -412,4 +359,3 @@
     </script>
 
 @endsection
-

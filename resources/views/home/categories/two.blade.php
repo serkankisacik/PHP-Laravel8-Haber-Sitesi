@@ -6,6 +6,9 @@
 
     <div class="category_article_wrapper">
         <div class="row">@foreach($kategoriiki as $rs)
+                @php
+                    $countreview = \App\Http\Controllers\HomeController::countreview($rs->id);
+                @endphp
             <div class="col-md-6">
                 <div class="category_article_body">
 
@@ -23,7 +26,7 @@
                     </div>
                     <!-- category_article_title -->
 
-                    <div class="article_date"><a href="#">{{$rs->created_at}} </a>, <a href="#"> {{$rs->user_id}}. Kullanıcı</a></div>
+                    <div class="article_date"><a href="#">{{$rs->created_at}} </a>, <span><a href="#"> {{$rs->user->name}}</a> Tarafından</span><br></div>
                     <!----article_date------>
                     <!-- article_date -->
 
@@ -34,7 +37,7 @@
 
                     <div class="media_social">
                         <span><a href="#"><i class="fa fa-share-alt"></i>424 </a> Shares</span>
-                        <span><i class="fa fa-comments-o"></i><a href="{{route('news',['id' => $rs->id, 'slug' => $rs->slug ])}}">4</a> Comments</span>
+                        <span><i class="fa fa-comments-o"></i><a href="{{route('news',['id' => $rs->id, 'slug' => $rs->slug ])}}"> {{$countreview}} </a> Comments</span>
                     </div>
                     <!-- media_social -->
 

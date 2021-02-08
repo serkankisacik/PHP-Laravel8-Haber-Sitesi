@@ -11,7 +11,7 @@ class Review extends Component
     public $record, $subject, $review, $news_id, $rate;
 
     public function mount($id){
-        $this->record=News::findOrFail($id);
+        $this->record = News::findOrFail($id);
         $this->news_id = $this->record->id;
     }
 
@@ -31,7 +31,6 @@ class Review extends Component
         $this->validate([
             'subject'=>'required|min:5',
             'review'=>'required|min:10',
-            'rate'=>'required'
         ]);
 
         \App\Models\Review::create([
