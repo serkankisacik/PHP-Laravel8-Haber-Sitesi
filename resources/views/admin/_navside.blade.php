@@ -15,7 +15,13 @@
                 <a  href="{{route('admin_category')}}"><i class="fa fa-folder-open fa-3x"></i> Kategoriler</a>
             </li>
             <li>
-                <a  href="{{route('admin_news')}}"><i class="fa fa-paperclip fa-3x"></i> Haberler</a>
+                <a  href="{{route('admin_news')}}"><i class="fa fa-paperclip fa-3x"></i><span class="fa arrow"></span> Haber</a>
+                <ul class="nav nav-second-level">
+                    <li><a  href="{{route('admin_news')}}"><i class="fa fa-paperclip"></i><span class="fa arrow"></span> Haberler</a></li>
+                    <li>
+                        <a href="{{route('admin_news_add')}}"><i class="fa fa-save"></i>Haber Ekle</a>
+                    </li>
+                </ul>
             </li>
             <li>
                 <a  href="{{route('admin_setting')}}"><i class="fa fa-cog fa-3x"></i> Ayarlar</a>
@@ -25,6 +31,9 @@
             </li>
             <li>
                 <a  href="{{route('admin_review')}}"><i class="fa fa-comment fa-3x"></i> Yorumlar </a>
+            </li>
+            <li>
+                <a  href="{{route('admin_faq')}}"><i class="fa fa-question fa-3x"></i> SSS </a>
             </li>
             <li>
                 <a  href="tab-panel.html"><i class="fa fa-qrcode fa-3x"></i> Tabs & Panels</a>

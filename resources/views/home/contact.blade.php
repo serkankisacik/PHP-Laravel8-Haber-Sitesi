@@ -11,7 +11,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
-
+                    <h1 align="center"><i class="fa fa-phone fa-5x"></i></h1>
                     <h1 align="center">{{$setting->title}} İletişim Bilgileri</h1>
                     <h2 align="center">{!! $setting->contact !!}</h2>
                     <br>

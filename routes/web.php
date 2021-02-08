@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\ReviewController;
@@ -28,6 +29,7 @@ Route::get('/', function () {
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/aboutus', [HomeController::class, 'aboutus'])->name('aboutus');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::get('/faq_old', [HomeController::class, 'faq_old'])->name('faq_old');
 Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
 Route::get('/tag', [HomeController::class, 'tag'])->name('tag');
 Route::get('/references', [HomeController::class, 'references'])->name('references');
@@ -90,6 +92,17 @@ Route::middleware('auth')->prefix('admin')->group(function (){
     #Setting
     Route::get('setting', [SettingController::class, 'index'])->name('admin_setting');
     Route::post('/setting/update', [SettingController::class, 'update'])->name('admin_setting_update');
+
+    #Faq
+    Route::prefix('faq')->group(function (){
+        Route::get('/', array(FaqController::class,'index'))->name('admin_faq');
+        Route::get('create',[FaqController::class,'create'])->name('admin_faq_add');
+        Route::post('store',[FaqController::class,'store'])->name('admin_faq_store');
+        Route::get('edit/{id}',[FaqController::class,'edit'])->name('admin_faq_edit');
+        Route::post('update/{id}',[FaqController::class,'update'])->name('admin_faq_update');
+        Route::get('delete/{id}',[FaqController::class,'destroy'])->name('admin_faq_delete');
+        Route::get('show',[FaqController::class,'show'])->name('admin_faq_show');
+    });
 });
 Route::middleware('auth')->prefix('account')->namespace('account')->group(function (){
     Route::get('/',[UserController::class,'index'])->name('myprofile');

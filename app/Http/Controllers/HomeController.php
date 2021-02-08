@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Livewire\Review;
 use App\Models\Category;
+use App\Models\Faq;
 use App\Models\Image;
 use App\Models\Message;
 use App\Models\News;
@@ -90,10 +91,15 @@ class HomeController extends Controller
         $setting = Setting::first();
         return view('home.references',['setting'=>$setting]);
     }
-    public function faq()
+    public function faq_old()
     {
         $setting = Setting::first();
-        return view('home.faq',['setting'=>$setting]);
+        return view('home.faq_old',['setting'=>$setting]);
+    }
+    public function faq(){
+        $setting = Setting::first();
+        $datalist= Faq::all()->sortBy('position');
+        return view('home.faq',['setting'=>$setting, 'datalist'=>$datalist]);
     }
     public function tag()
     {

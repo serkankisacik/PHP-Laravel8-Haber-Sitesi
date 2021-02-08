@@ -51,6 +51,7 @@
                         <ul class="list-unstyled">
                             <li><a href="{{route('aboutus')}}">Hakkımızda</a></li>
                             <li><a href="{{route('contact')}}">İletişim</a></li>
+                            <li><a href="{{route('faq_old')}}">SSS Eski Versiyon</a></li>
                             <li><a href="{{route('faq')}}">SSS</a></li>
                             <li><a href="{{route('tag')}}">Künye</a></li>
                             <li><a href="{{route('references')}}">Referanslar</a></li>

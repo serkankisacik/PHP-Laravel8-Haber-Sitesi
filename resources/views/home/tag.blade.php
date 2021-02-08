@@ -10,6 +10,7 @@
     <section id="category_section" class="category_section">
         <div class="container">
             <div class="entity_content">
+                <h1 align="center"><i class="fa fa-tags fa-5x"></i></h1>
                 <h1 align="center">{{$setting->title}} Künye</h1>
                 @if($setting->tag !=null)
                     <p>{!! $setting->tag !!}</p>
