@@ -42,6 +42,8 @@ Route::get('/postlist/{search}', [HomeController::class, 'postlist'])->name('pos
 
 Route::middleware('auth')->prefix('admin')->group(function (){
 
+    Route::middleware('admin')->group(function (){
+
     Route::get('/',[\App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin_home');
 
     Route::get('category',[CategoryController::class, 'index'])->name('admin_category');
@@ -103,6 +105,8 @@ Route::middleware('auth')->prefix('admin')->group(function (){
         Route::get('delete/{id}',[FaqController::class,'destroy'])->name('admin_faq_delete');
         Route::get('show',[FaqController::class,'show'])->name('admin_faq_show');
     });
+
+    });#admin
 });
 Route::middleware('auth')->prefix('account')->namespace('account')->group(function (){
     Route::get('/',[UserController::class,'index'])->name('myprofile');
@@ -133,7 +137,7 @@ Route::middleware('auth')->prefix('user')->namespace('user')->group(function (){
     });
 
 });
-Route::get('/admin', [\App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin_home')->middleware('auth');
+#Route::get('/admin', [\App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin_home')->middleware('auth');
 Route::get('/admin/login', [\App\Http\Controllers\Admin\HomeController::class, 'login'])->name('admin_login');
 Route::post('/admin/logincheck', [\App\Http\Controllers\Admin\HomeController::class, 'logincheck'])->name('admin_logincheck');
 Route::get('/admin/logout', [\App\Http\Controllers\Admin\HomeController::class, 'logout'])->name('admin_logout');

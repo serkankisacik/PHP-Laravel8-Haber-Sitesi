@@ -25,7 +25,7 @@
                     <h2>Giriş Sayfası</h2>
                     <img src="{{asset('assets')}}/img/logo.png">
                     <h5>Hoşgeldin, işlem yapmak için lütfen giriş yapınız. </h5>
-
+                    @include('home.message')
                 </div>
                 <div class="col-md-4"></div>
             </div>
