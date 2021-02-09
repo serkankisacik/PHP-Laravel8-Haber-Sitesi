@@ -77,7 +77,7 @@
                                         @if (Route::has('login'))
                                                 @auth
                                                     @if(\Illuminate\Support\Facades\Auth::user()->profile_photo_path != null)
-                                                    <img src="{{ \Illuminate\Support\Facades\Storage::url(\Illuminate\Support\Facades\Auth::user()->profile_photo_path) }}" height="30" alt="{{\Illuminate\Support\Facades\Auth::user()->name}}"></a>
+                                                    <img src="{{ \Illuminate\Support\Facades\Storage::url(\Illuminate\Support\Facades\Auth::user()->profile_photo_path) }}" height="40" alt="{{\Illuminate\Support\Facades\Auth::user()->name}}"></a>
                                                 @endif
                                                     <li><a href="{{ url('admin') }}">Kontrol Paneli</a></li>
                                                 @else
@@ -100,7 +100,7 @@
                                                 <i class="fa fa-angle-down"></i></button>
                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                                                 <li><a href="{{route('myprofile')}}">Profil </a></li>
-                                                <li><a href="#">Yazılarım</a></li>
+                                                <li><a href="{{route('user_news')}}">Yazılarım</a></li>
                                                 <li><a href="{{route('myreviews')}}">Yorumlarım</a></li>
                                                 <li><a href="{{route('admin_logout')}}">Çıkış yap</a></li>
 

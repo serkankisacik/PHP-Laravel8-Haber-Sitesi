@@ -7,11 +7,8 @@
                 <div class="col-md-12">
                     <h2>Haberler</h2>
                     <h5>Bu sayfada haberlerin listesini görmektesin. </h5>
-
-                </div>
-            </div>
             <!-- /. ROW  -->
-            <hr />
+            <hr/>
                 <div class="panel-body">
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered table-hover">
@@ -24,8 +21,6 @@
                                 <th>Görsel</th>
                                 <th>Galeri</th>
                                 <th>Kategori</th>
-                                <th>Kullanıcı</th>
-                                <th>Detaylar</th>
                                 <th>Slug</th>
                                 <th>Status</th>
                                 <th>Oluşturma</th>
@@ -44,10 +39,8 @@
                                         <img src="{{ \Illuminate\Support\Facades\Storage::url($rs->image) }}" height="50">
                                     @endif
                                 </td>
-                                <td><a onclick="return !window.open(this.href,'','top=50 left=100 width=1100, height=700')" href="{{route('admin_image_show',['news_id'=>$rs->id])}}"><i class="fa fa-file fa-3x"></i></a> </td>
+                                <td><a onclick="return !window.open(this.href,'','top=50 left=100 width=1100, height=700')" href="{{route('admin_image_add',['news_id'=>$rs->id])}}"><i class="fa fa-file fa-3x"></i></a> </td>
                                 <td>{{$rs->category_id}}</td>
-                                <td>{{$rs->user_id}}</td>
-                                <td>{{$rs->detail}}</td>
                                 <td>{{$rs->slug}}</td>
                                 <td>{{$rs->status}}</td>
                                 <td>{{$rs->created_at}}</td>
@@ -62,6 +55,9 @@
                     </div>
                 </div>
 
+
+                </div>
+            </div>
         </div>
         <!-- /. PAGE INNER  -->
     </div>

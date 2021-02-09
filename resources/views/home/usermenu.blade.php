@@ -20,7 +20,7 @@
         </div>
         <div class="media-body">
             <h3 class="media-heading">
-                <a href="single.html" target="_self">Yazılarım</a>
+                <a href="{{route('user_news')}}" target="_self">Yazılarım</a>
             </h3>
 
         </div>

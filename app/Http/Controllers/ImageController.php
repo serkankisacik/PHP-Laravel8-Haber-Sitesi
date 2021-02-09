@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\Image;
 use App\Models\News;
 use Illuminate\Http\Request;
@@ -30,7 +29,7 @@ class ImageController extends Controller
     {
         $data=News::find($news_id);
         $images = DB::table('images')->where('news_id','=',$news_id)->get();
-        return view('admin.image_add',['data'=>$data,'images'=>$images]);
+        return view('home.user_news_image_add',['data'=>$data,'images'=>$images]);
     }
 
     /**
@@ -48,10 +47,11 @@ class ImageController extends Controller
         $data->image = Storage::putFile('images', $request->file('image'));
 
         $data->save();
-        return redirect()->route('admin_image_add',['news_id'=>$news_id]);
+        return redirect()->back();
     }
     public function show(Image $image)
     {
+        //
     }
     public function edit(Image $image)
     {
@@ -67,6 +67,6 @@ class ImageController extends Controller
     {
         $data = Image::find($id);
         $data->delete();
-        return redirect()->route('admin_image_add',['news_id'=>$news_id]);
+        return redirect()->back();
     }
 }

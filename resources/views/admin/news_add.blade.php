@@ -76,9 +76,9 @@
                     </div>
                     <div class="form-group">
                         <label>Durum</label>
-                        <select class="form-control">
-                            <option>Açık</option>
-                            <option>Kapalı</option>
+                        <select id="status" name="status" class="form-control">
+                            <option>True</option>
+                            <option>False</option>
                         </select>
                     </div>
                     <div class="form-group">

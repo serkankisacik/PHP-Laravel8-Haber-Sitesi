@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\News;
 use App\Models\Review;
 use App\Models\Setting;
 use App\Models\User;
@@ -10,15 +11,11 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $setting = Setting::first();
-        return view('home.user_profile',['setting'=>$setting]);
+        $datalist = News::all();
+        return view('home.user_profile',['setting'=>$setting,'datalist'=>$datalist]);
     }
 
     /**

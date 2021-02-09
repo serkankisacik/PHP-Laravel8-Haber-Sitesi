@@ -66,9 +66,10 @@
                 </div>
                 <div class="form-group">
                     <label>Durum</label>
-                    <select value="{{$data->status}}" class="form-control">
-                        <option>Açık</option>
-                        <option>Kapalı</option>
+                    <select value="status" id="status" name="status" class="form-control">
+                        <option selected>{{$data->status}}</option>
+                        <option>True</option>
+                        <option>False</option>
                     </select>
                 </div>
                 <div class="form-group">

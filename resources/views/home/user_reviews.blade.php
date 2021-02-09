@@ -7,7 +7,7 @@
     <section id="category_section" class="category_section">
         <div class="container">
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-9">
 
                     <div class="panel-body">
                         <div class="table-responsive">
@@ -46,7 +46,7 @@
                 </div>
                 <!-- Left Section -->
 
-                <div class="col-md-4">
+                <div class="col-md-3">
                     @include('home.usermenu')
                 </div>
                 <!-- Right Section -->
