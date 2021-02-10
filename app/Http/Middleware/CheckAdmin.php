@@ -20,7 +20,7 @@ class CheckAdmin
     {
         $userRoles = Auth::user()->roles->pluck('name');
         If(!$userRoles->contains('admin')){
-            return redirect(route('admin_login'))->with('error', 'İzniniz yok');
+            return redirect(route('admin_login'))->with('error', 'İzniniz yok')->with('warning', 'Hoop hemşerim nereye')->with('info', 'Site yöneticisinden izin iste.');
         }
         return $next($request);
     }
