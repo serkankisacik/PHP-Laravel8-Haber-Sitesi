@@ -1,7 +1,6 @@
 @extends('layouts.main')
 
 @section('title', $setting->title )
-@section('pagetitle', $data->title)
 @section('keywords', $setting->keywords)
 @section('content')
     <section id="category_section" class="category_section">

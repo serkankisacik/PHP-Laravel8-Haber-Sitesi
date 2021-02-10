@@ -16,15 +16,17 @@ class NewsController extends Controller
     {
         $datalist=News::where('user_id',Auth::id())->get();
         //$data=News::with('category')->where('category_id',$category_id)->paginate(5);
+        $reviewlist = \App\Models\Review::select('review', 'user_id', 'news_id')->limit(3)->latest()->get();
         $setting = Setting::first();
 
-        return view('home.user_news',['setting'=>$setting,'datalist'=>$datalist]);
+        return view('home.user_news',['setting'=>$setting,'datalist'=>$datalist,'reviewlist'=>$reviewlist]);
     }
     public function create()
     {
         $setting = Setting::first();
         $datalist = Category::all();
-        return view('home.user_news_add',['setting'=>$setting,'datalist'=>$datalist]);
+        $reviewlist = \App\Models\Review::select('review', 'user_id', 'news_id')->limit(3)->latest()->get();
+        return view('home.user_news_add',['setting'=>$setting,'datalist'=>$datalist,'reviewlist'=>$reviewlist]);
     }
     public function store(Request $request)
     {
@@ -51,7 +53,8 @@ class NewsController extends Controller
         $setting = Setting::first();
         $data = News::find($id);
         $datalist = Category::with('children')->get();
-        return view('home.user_news_edit',['setting'=>$setting,'data'=>$data,'datalist'=>$datalist]);
+        $reviewlist = \App\Models\Review::select('review', 'user_id', 'news_id')->limit(3)->latest()->get();
+        return view('home.user_news_edit',['setting'=>$setting,'data'=>$data,'datalist'=>$datalist,'reviewlist'=>$reviewlist]);
     }
     public function update(Request $request, News $news, $id)
     {

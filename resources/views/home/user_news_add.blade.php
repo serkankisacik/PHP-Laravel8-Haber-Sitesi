@@ -3,7 +3,7 @@
 @section('title', $setting->title )
 @section('pagetitle', "Kullanıcı Profili")
 @section('keywords', $setting->keywords)
-@section('javascript')
+@section('css')
     <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
 @endsection
 @section('content')

@@ -15,7 +15,8 @@ class UserController extends Controller
     {
         $setting = Setting::first();
         $datalist = News::all();
-        return view('home.user_profile',['setting'=>$setting,'datalist'=>$datalist]);
+        $reviewlist = \App\Models\Review::select('review', 'user_id', 'news_id')->limit(3)->latest()->get();
+        return view('home.user_profile',['setting'=>$setting,'datalist'=>$datalist,'reviewlist'=>$reviewlist]);
     }
 
     /**
@@ -86,7 +87,8 @@ class UserController extends Controller
     public function myreviews(){
         $setting = Setting::first();
         $datalist = Review::where('user_id', '=', Auth::user()->id)->get();
-        return view('home.user_reviews',['datalist'=>$datalist,'setting'=>$setting]);
+        $reviewlist = \App\Models\Review::select('review', 'user_id', 'news_id')->limit(3)->latest()->get();
+        return view('home.user_reviews',['datalist'=>$datalist,'setting'=>$setting,'reviewlist'=>$reviewlist]);
     }
     public function destroymyreivew(Review $review,$id){
         $data = Review::find($id);

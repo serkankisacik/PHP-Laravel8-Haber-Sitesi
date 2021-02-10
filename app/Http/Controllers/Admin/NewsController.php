@@ -14,7 +14,7 @@ class NewsController extends Controller
 {
     public function index()
     {
-        $datalist=DB::table('news')->get();
+        $datalist=DB::table('news')->orderByDesc('created_at')->get();
         //$data=News::with('category')->where('category_id',$category_id)->paginate(5);
 
         return view('admin.news',['datalist'=>$datalist]);

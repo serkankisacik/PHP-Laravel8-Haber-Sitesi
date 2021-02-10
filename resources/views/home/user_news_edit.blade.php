@@ -3,11 +3,14 @@
 @section('title', $setting->title )
 @section('pagetitle', "Kullanıcı Profili")
 @section('keywords', $setting->keywords)
+@section('css')
+    <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
+@endsection
 @section('content')
     <section id="category_section" class="category_section">
         <div class="container">
             <div class="row">
-                <div class="col-md-9">
+                <div class="col-md-12">
                     <div id="page-wrapper" >
                         <div id="page-inner">
                             <div class="row">
@@ -18,7 +21,7 @@
                             </div>
                             <!-- /. ROW  -->
                             <hr />
-                            <div class="col-md-6">
+                            <div class="col-md-9">
                                 <form role="form" action="{{route('user_news_update', ['id'=>$data->id])}}" method="post" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group">
@@ -36,13 +39,9 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Haber</label>
-                                        <textarea value="{{$data->detail}}" id="summernote" name="detail"  >{{$data->detail}}</textarea>
+                                        <textarea id="news" name="news"  >{{$data->detail}}</textarea>
                                         <script>
-                                            $('#summernote').summernote({
-                                                tabsize: 2,
-                                                height: 120,
-                                                focus: true
-                                            });
+                                            CKEDITOR.replace( 'news' );
                                         </script>
                                         <p class="help-block">Haberin açıklaması.</p>
                                     </div>
@@ -80,40 +79,16 @@
 
                                 </form>
                             </div>
-                            <div class="col-md-6">
-                                <h2> En son haberler </h2>
-                                <div class="panel-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-striped table-bordered table-hover">
-                                            <thead>
-                                            <tr>
-                                                <th>Haber</th>
-                                                <th>Kısayol</th>
-                                                <th>Durum</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            @foreach($datalist as $rs)
-                                                <tr>
-                                                    <td>{{$rs->title}}</td>
-                                                    <td>{{$rs->slug}}</td>
-                                                    <td>{{$rs->status}}</td>
-                                                </tr>
-                                            @endforeach
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
                             <!-- /. PAGE INNER  -->
+                            <div class="col-md-3">
+                                @include('home.usermenu')
+                            </div>
                         </div>
 
                     </div>
                 <!-- Left Section -->
 
-                <div class="col-md-3">
-                    @include('home.usermenu')
-                </div>
+
                 <!-- Right Section -->
             </div>
             <!-- Row -->

@@ -17,7 +17,7 @@
                     </div>
                     <!-- top_article_img -->
 
-                    <span class="tag black"><a href="category.html" target="_self">Spor</a></span>
+                    <span class="tag green"><a href="{{route('category',['id' => $rs->category_id, 'slug' => $rs->category->slug ])}}" target="_self">{{$rs->category->title}}</a></span>
 
                     <div class="category_article_title">
                         <h2><a href="{{route('news',['id' => $rs->id, 'slug' => $rs->slug ])}}" target="_self">{{$rs->title}}</a>

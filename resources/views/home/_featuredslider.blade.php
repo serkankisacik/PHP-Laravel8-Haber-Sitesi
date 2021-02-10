@@ -103,40 +103,45 @@
             <div class="col-md-7">
                 <!-- Slideshow container -->
                 <div class="slideshow-container">
-                        @foreach($slider as $rs)
-                    <!-- Full-width images with number and caption text -->
-                    <div class="mySlides fade">
 
+                    <!-- Full-width images with number and caption text -->
+
+                        @foreach($slider as $rs)
+                        @php
+                            $countreview = \App\Http\Controllers\HomeController::countreview($rs->id);
+                        @endphp
+                        <div class="mySlides fade">
                         <div class="numbertext">{{$rs->id}} / 3</div>
                         <img src="{{\Illuminate\Support\Facades\Storage::url($rs->image)}}" style="width:100%">
-                        <div class="feature_article_inner">
-                            <div class="tag_lg red"><a href="category.html">Son Dakika</a></div>
-                            <div class="feature_article_title">
-                                <h1><a href="single.html" target="_self">{{$rs->title}} </a></h1>
-                            </div>
-                            <!-- feature_article_title -->
+                            <div class="feature_article_inner">
+                                <div class="tag_lg red"><a href="category.html">Son Dakika</a></div>
+                                <div class="feature_article_title">
+                                    <h1><a href="single.html" target="_self">{{$rs->title}} </a></h1>
+                                </div>
+                                <!-- feature_article_title -->
 
-                            <div class="feature_article_date">
-                                <a href="#" target="_self">Kategori {{$rs->category_id}}</a>
-                                <a href="#" target="_self">Kullanıcı {{$rs->user_id}}</a>
-                                <a href="#"target="_self">Yayınlanma {{$rs->created_at}}</a></div>
-                            <!-- feature_article_date -->
+                                <div class="feature_article_date">
+                                    <a href="#" target="_self">Kategori {{$rs->category_id}}</a>
+                                    <a href="#" target="_self">Kullanıcı {{$rs->user_id}}</a>
+                                    <a href="#"target="_self">Yayınlanma {{$rs->created_at}}</a></div>
+                                <!-- feature_article_date -->
 
-                            <div class="feature_article_content">
-                                In a move to address mounting concerns about security on Android, Google and Samsung are
-                                now issuing.
-                            </div>
-                            <!-- feature_article_content -->
+                                <div class="feature_article_content">
+                                    {{$rs->detail}}
+                                </div>
+                                <!-- feature_article_content -->
 
-                            <div class="article_social">
-                                <span><i class="fa fa-share-alt"></i><a href="#">424</a>Shares</span>
-                                <span><i class="fa fa-comments-o"></i><a href="#">4</a>Comments</span>
+                                <div class="article_social">
+                                    <span><i class="fa fa-share-alt"></i><a href="#">424</a>Shares</span>
+                                    <span><i class="fa fa-comments-o"></i><a href="#">{{$countreview}} </a>Yorum</span>
+                                </div>
+                                <!-- article_social -->
+                                <p class="divider"><a href="{{route('news',['id' => $rs->id, 'slug' => $rs->slug ])}}">Devamı&nbsp;&raquo;</a></p>
                             </div>
-                            <!-- article_social -->
-                            <p class="divider"><a href="{{route('news',['id' => $rs->id, 'slug' => $rs->slug ])}}">Devamı&nbsp;&raquo;</a></p>
                         </div>
-                    </div>
                         @endforeach
+
+
                     <!-- Next and previous buttons -->
                     <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
                     <a class="next" onclick="plusSlides(1)">&#10095;</a>
@@ -150,34 +155,35 @@
                 </div>
             </div>
             <!-- col-md-7 -->
-
+            @foreach($usthaber as $rs)
+                @php
+                    $countreview = \App\Http\Controllers\HomeController::countreview($rs->id);
+                @endphp
             <div class="col-md-5">
                 <div class="feature_static_wrapper">
                     <div class="feature_article_img">
-                        <img class="img-responsive" src="{{asset('assets')}}/img/feature-static1.jpg" alt="feature-top">
+                        <img class="img-responsive" src="{{\Illuminate\Support\Facades\Storage::url($rs->image)}}" alt="feature-top">
                     </div>
                     <!-- feature_article_img -->
 
                     <div class="feature_article_inner">
-                        <div class="tag_lg purple"><a href="category.html">Top Viewed</a></div>
+                        <div class="tag_lg purple"><a href="category.html">{{$rs->category->title}}</a></div>
                         <div class="feature_article_title">
-                            <h1><a href="single.html" target="_self">Alcatel's $180 Idol 3 4.7 is a </a></h1>
+                            <h1><a href="single.html" target="_self">{{$rs->title}} </a></h1>
                         </div>
                         <!-- feature_article_title -->
 
-                        <div class="feature_article_date"><a href="#" target="_self">Stive Clark</a>,<a href="#"
-                                                                                                        target="_self">Aug
-                                4, 2015</a></div>
+                        <div class="feature_article_date"><a href="#" target="_self">{{$rs->user->name}}</a>,<a href="#" target="_self">{{$rs->created_at}}</a></div>
                         <!-- feature_article_date -->
 
                         <div class="feature_article_content">
-                            In a move to address mounting concerns about security on Android...
+                            {{$rs->description}}
                         </div>
                         <!-- feature_article_content -->
 
                         <div class="article_social">
                             <span><i class="fa fa-share-alt"></i><a href="#">424</a>Shares</span>
-                            <span><i class="fa fa-comments-o"></i><a href="#">4</a>Comments</span>
+                            <span><i class="fa fa-comments-o"></i><a href="#">{{$countreview}}</a>Yorum</span>
                         </div>
                         <!-- article_social -->
 
@@ -186,50 +192,16 @@
 
                 </div>
                 <!-- feature_static_wrapper -->
-
             </div>
             <!-- col-md-5 -->
-
+            @endforeach
+            <!-- col-md-5 -->
             <div class="col-md-5">
-                <div class="feature_static_last_wrapper">
-                    <div class="feature_article_img">
-                        <img class="img-responsive" src="{{asset('assets')}}/img/feature-static2.jpg" alt="feature-top">
-                    </div>
-                    <!-- feature_article_img -->
-
-                    <div class="feature_article_inner">
-                        <div class="tag_lg blue"><a href="category.html">Top Viewed</a></div>
-
-                        <div class="feature_article_title">
-                            <h1><a href="single.html" target="_self">Gadget user good news</a></h1>
-                        </div>
-                        <!-- feature_article_title -->
-
-                        <div class="feature_article_date"><a href="#" target="_self">Stive Clark</a>,<a href="#"
-                                                                                                        target="_self">Aug
-                                4, 2015</a></div>
-                        <!-- feature_article_date -->
-
-                        <div class="feature_article_content">
-                            In a move to address mounting concerns about security on Android...
-                        </div>
-                        <!-- feature_article_content -->
-
-                        <div class="article_social">
-                            <span><i class="fa fa-share-alt"></i><a href="#">424</a>Shares</span>
-                            <span><i class="fa fa-comments-o"></i><a href="#">4</a>Comments</span>
-                        </div>
-                        <!-- article_social -->
-
-                    </div>
-                    <!-- feature_article_inner -->
+                <div class="feature_static_wrapper">
 
                 </div>
                 <!-- feature_static_wrapper -->
-
             </div>
-            <!-- col-md-5 -->
-
         </div>
         <!-- Row -->
 

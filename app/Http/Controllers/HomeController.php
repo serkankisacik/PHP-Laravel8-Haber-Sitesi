@@ -28,13 +28,15 @@ class HomeController extends Controller
 
         $setting = Setting::first();
         $categorylist = Category::select('title', 'slug', 'id')->get();
-        $slider = News::select('id', 'title','image','category_id','created_at','user_id', 'slug')->limit(3)->get();
-        $kategoribir = News::select('id', 'title','image','category_id','created_at','user_id', 'slug')->limit(4)->where('category_id', '=', 1)->get();
-        $kategoriiki = News::select('id', 'detail', 'title','image','category_id','created_at','user_id', 'slug')->limit(2)->orderByDesc('created_at')->where('category_id', '=', 2)->get();
-        $kategoriuc = News::select('id', 'title','image','category_id','created_at','user_id', 'slug')->limit(4)->where('category_id', '=', 3)->get();
-        $kategoridort = News::select('id', 'title','image','category_id','created_at','user_id', 'slug')->limit(3)->where('category_id', '=', 4)->get();
-        $kategoribes = News::select('id', 'title','image','category_id','created_at','user_id', 'slug')->limit(3)->where('category_id', '=', 5)->get();
-
+        $slider = News::select('id', 'title','image','category_id','created_at','user_id', 'slug')->limit(3)->latest()->get();
+        $usthaber = News::select('id', 'title','image','category_id','created_at','user_id', 'slug')->limit(2)->inRandomOrder()->get();
+        $kategoribir = News::select('id', 'title','image','category_id','created_at','user_id', 'slug')->limit(4)->where('category_id', '=', 1)->latest()->get();
+        $kategoriiki = News::select('id', 'detail', 'title','image','category_id','created_at','user_id', 'slug')->limit(2)->orderByDesc('created_at')->where('category_id', '=', 2)->latest()->get();
+        $kategoriuc = News::select('id', 'title','image','category_id','created_at','user_id', 'slug')->limit(4)->where('category_id', '=', 3)->latest()->get();
+        $kategoridort = News::select('id', 'title','image','category_id','created_at','user_id', 'slug')->limit(3)->where('category_id', '=', 4)->latest()->get();
+        $kategoribes = News::select('id', 'title','image','category_id','created_at','user_id', 'slug')->limit(3)->where('category_id', '=', 5)->latest()->get();
+        $sidebarbir = News::select('id', 'title','image','category_id','created_at','user_id', 'slug')->limit(5)->latest()->get();
+        $reviewlist = \App\Models\Review::select('review', 'user_id', 'news_id')->limit(3)->latest()->get();
 
         $data=[
             'setting'=>$setting,
@@ -45,6 +47,9 @@ class HomeController extends Controller
             'kategoriuc'=>$kategoriuc,
             'kategoridort'=>$kategoridort,
             'kategoribes'=>$kategoribes,
+            'usthaber'=>$usthaber,
+            'sidebarbir'=>$sidebarbir,
+            'reviewlist'=>$reviewlist,
 
             'page'=>'home'
         ];
@@ -57,12 +62,16 @@ class HomeController extends Controller
         $data = News::find($id);
         $reviews = \App\Models\Review::select('news_id', 'user_id', 'subject','review' )->where('news_id', '=', $id)->get();
         $kategori = News::select('id', 'title','image','category_id','created_at','user_id', 'slug')->limit(4)->inRandomOrder()->get();
+        $sidebarbir = News::select('id', 'title','image','category_id','created_at','user_id', 'slug')->limit(5)->latest()->get();
+        $reviewlist = \App\Models\Review::select('review', 'user_id', 'news_id')->limit(3)->latest()->get();
         $datapaket=[
             'data'=>$data,
             'setting'=>$setting,
             'kategori'=>$kategori,
             'datalist'=>$datalist,
             'reviews'=>$reviews,
+            'sidebarbir'=>$sidebarbir,
+            'reviewlist'=>$reviewlist,
             'page'=>'home'
         ];
         return view('home.post',$datapaket);
@@ -72,39 +81,45 @@ class HomeController extends Controller
         $setting = Setting::first();
         $datalist = News::where('category_id',$id)->get();
         $data = Category::find($id)->with('children')->get();
-        return view('home.category',['data'=>$data, 'datalist'=>$datalist,'setting'=>$setting,]);
+        return view('home.category',['data'=>$data, 'datalist'=>$datalist,'setting'=>$setting]);
     }
 
     public function aboutus()
     {
         $setting = Setting::first();
-        return view('home.about',['setting'=>$setting]);
+        $reviewlist = \App\Models\Review::select('review', 'user_id', 'news_id')->limit(3)->latest()->get();
+        return view('home.about',['setting'=>$setting,'reviewlist'=>$reviewlist]);
     }
 
     public function contact()
     {
         $setting = Setting::first();
-        return view('home.contact',['setting'=>$setting]);
+        $reviewlist = \App\Models\Review::select('review', 'user_id', 'news_id')->limit(3)->latest()->get();
+        return view('home.contact',['setting'=>$setting,'reviewlist'=>$reviewlist]);
     }
     public function references()
     {
         $setting = Setting::first();
-        return view('home.references',['setting'=>$setting]);
+        $reviewlist = \App\Models\Review::select('review', 'user_id', 'news_id')->limit(3)->latest()->get();
+        return view('home.references',['setting'=>$setting,'reviewlist'=>$reviewlist]);
     }
     public function faq_old()
     {
         $setting = Setting::first();
-        return view('home.faq_old',['setting'=>$setting]);
+        $reviewlist = \App\Models\Review::select('review', 'user_id', 'news_id')->limit(3)->latest()->get();
+        return view('home.faq_old',['setting'=>$setting,'reviewlist'=>$reviewlist]);
     }
     public function faq(){
         $setting = Setting::first();
+        $reviewlist = \App\Models\Review::select('review', 'user_id', 'news_id')->limit(3)->latest()->get();
         $datalist= Faq::all()->sortBy('position');
-        return view('home.faq',['setting'=>$setting, 'datalist'=>$datalist]);
+        return view('home.faq',['setting'=>$setting, 'datalist'=>$datalist,'reviewlist'=>$reviewlist]);
     }
     public function tag()
     {
         $setting = Setting::first();
-        return view('home.tag',['setting'=>$setting]);
+        $reviewlist = \App\Models\Review::select('review', 'user_id', 'news_id')->limit(3)->latest()->get();
+        return view('home.tag',['setting'=>$setting,'reviewlist'=>$reviewlist]);
     }
     public function sendmessage(Request $request)
     {

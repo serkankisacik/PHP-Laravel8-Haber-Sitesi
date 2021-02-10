@@ -61,17 +61,18 @@
             </div>
             <div class="col-md-3">
                 <div class="footer_widget_title">
-                    <h3><a href="#" target="_self">Editorün Seçimi</a></h3>
+                    <h3><a href="#" target="_self">Son yorumlar</a></h3>
                 </div>
+                @foreach($reviewlist as $rs)
                 <div class="media">
                     <div class="media-left">
-                        <a href="#"><img class="media-object" src="{{asset('assets')}}/img/editor_pic1.jpg"
-                                         alt="Generic placeholder image"></a>
+                        <a href="#"><img class="media-object" src="{{\Illuminate\Support\Facades\Storage::url($rs->news->image)}}" height="100px"  alt="Generic placeholder image"></a>
                     </div>
                     <div class="media-body">
                         <h3 class="media-heading">
-                            <a href="single.html">Apple launches photo-centric wrist watch for Android</a>
+                            <a href="single.html">{{ substr($rs->review, 0,45 ) }}</a>
                         </h3>
+                        <span><a href="#"> {{$rs->user->name}} </a> Tarafından</span><br>
                         <span class="rating">
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
@@ -81,43 +82,9 @@
                         </span>
                     </div>
                 </div>
-                <div class="media">
-                    <div class="media-left">
-                        <a href="#"><img class="media-object" src="{{asset('assets')}}/img/editor_pic2.jpg"
-                                         alt="Generic placeholder image"></a>
-                    </div>
-                    <div class="media-body">
-                        <h3 class="media-heading">
-                            <a href="single.html">Apple launches photo-centric wrist watch for Android</a>
-                        </h3>
-                        <span class="rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-half-full"></i>
-                        </span>
-                    </div>
-                </div>
-                <div class="media">
-                    <div class="media-left">
-                        <a href="#"><img class="media-object" src="{{asset('assets')}}/img/editor_pic3.jpg"
-                                         alt="Generic placeholder image"></a>
-                    </div>
-                    <div class="media-body">
-                        <h3 class="media-heading">
-                            <a href="single.html">Apple launches photo-centric wrist watch for Android</a>
-                        </h3>
-                        <span class="rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-half-full"></i>
-                        </span>
-                    </div>
-                </div>
+                @endforeach
             </div>
+
             <div class="col-md-3">
                 <div class="footer_widget_title">
                     <h3><a href="category.html" target="_self">Son Fotoğraflar</a></h3>

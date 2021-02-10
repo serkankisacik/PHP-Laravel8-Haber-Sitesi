@@ -2,8 +2,8 @@
     <div id="page-inner">
         <div class="row">
             <div class="col-md-12">
-                <h2>Admin Dashboard</h2>
-                <h5>Welcome Jhon Deo , Love to see you back. </h5>
+                <h2>Yönetici Gösterge Tablosu</h2>
+                <h5>{{\Illuminate\Support\Facades\Auth::user()->name}} , seni tekrar görmek güzel. </h5>
             </div>
         </div>
         <!-- /. ROW  -->

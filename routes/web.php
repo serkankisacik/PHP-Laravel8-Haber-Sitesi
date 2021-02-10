@@ -42,7 +42,7 @@ Route::get('/postlist/{search}', [HomeController::class, 'postlist'])->name('pos
 
 Route::middleware('auth')->prefix('admin')->group(function (){
 
-    Route::middleware('admin')->group(function (){
+    #Route::middleware('admin')->group(function (){
 
     Route::get('/',[\App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin_home');
 
@@ -106,7 +106,6 @@ Route::middleware('auth')->prefix('admin')->group(function (){
         Route::get('show',[FaqController::class,'show'])->name('admin_faq_show');
     });
 
-    });#admin
 });
 Route::middleware('auth')->prefix('account')->namespace('account')->group(function (){
     Route::get('/',[UserController::class,'index'])->name('myprofile');

@@ -19,7 +19,7 @@
 
             </div>
             <div class="col-md-7">
-                <span class="tag orange">Yerel</span>
+                <span class="tag orange"><a href="{{route('category',['id' => $rs->category_id, 'slug' => $rs->category->slug ])}}" target="_self">{{$rs->category->title}}</a></span>
 
                 <div class="category_article_title">
                     <h2><a href="{{route('news',['id' => $rs->id, 'slug' => $rs->slug ])}}" target="_self">{{$rs->title}} </a></h2>
