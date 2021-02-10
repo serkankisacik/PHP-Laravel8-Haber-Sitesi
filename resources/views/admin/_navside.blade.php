@@ -34,6 +34,9 @@
                 <a  href="{{route('admin_faq')}}"><i class="fa fa-question fa-3x"></i> SSS </a>
             </li>
             <li>
+                <a  href="{{route('admin_users')}}"><i class="fa fa-users fa-3x"></i> Kullanıcı İşlemleri </a>
+            </li>
+            <li>
                 <a class="active-menu"  href="{{route('home')}}"><i class="fa fa-pagelines fa-3x"></i> Siteye Git</a>
             </li>
         </ul>

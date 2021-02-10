@@ -66,7 +66,7 @@
                 @foreach($reviewlist as $rs)
                 <div class="media">
                     <div class="media-left">
-                        <a href="#"><img class="media-object" src="{{\Illuminate\Support\Facades\Storage::url($rs->news->image)}}" height="100px"  alt="Generic placeholder image"></a>
+                        <a href="#"><img class="media-object" src="{{\Illuminate\Support\Facades\Storage::url($rs->user->profile_photo_path)}}" height="100px"  alt="Generic placeholder image"></a>
                     </div>
                     <div class="media-body">
                         <h3 class="media-heading">

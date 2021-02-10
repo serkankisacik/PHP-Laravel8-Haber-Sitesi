@@ -141,6 +141,8 @@ class HomeController extends Controller
     public function getnews(Request $request)
     {
         $search=$request->input('search');
+        $sidebarbir = News::select('id', 'title','image','category_id','created_at','user_id', 'slug')->limit(5)->latest()->get();
+        $reviewlist = \App\Models\Review::select('review', 'user_id', 'news_id')->limit(3)->latest()->get();
         $count = News::where('title','like','%'.$search.'%')->get()->count();
         if ($count==1)
         {
@@ -149,7 +151,7 @@ class HomeController extends Controller
         }
         else
         {
-            return redirect()->route('postlist',['search'=>$search]);
+            return redirect()->route('postlist',['search'=>$search,'sidebar'=>$sidebarbir,'reviewlist'=>$reviewlist]);
         }
 
         /* old
@@ -160,8 +162,10 @@ class HomeController extends Controller
 
     public function postlist($search){
         $datalist = News::where('title','like','%'.$search.'%')->get();
+        $sidebarbir = News::select('id', 'title','image','category_id','created_at','user_id', 'slug')->limit(5)->latest()->get();
+        $reviewlist = \App\Models\Review::select('review', 'user_id', 'news_id')->limit(3)->latest()->get();
         $setting = Setting::first();
-        return view('home.search_post',['search'=>$search,'datalist'=>$datalist,'setting'=>$setting,'data'=>$datalist]);
+        return view('home.search_post',['search'=>$search,'datalist'=>$datalist,'setting'=>$setting,'data'=>$datalist,'sidebarbir'=>$sidebarbir,'reviewlist'=>$reviewlist]);
     }
     public static function countreview($id){
         return \App\Models\Review::where('news_id',$id)->count();

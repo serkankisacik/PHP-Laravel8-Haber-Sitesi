@@ -116,7 +116,7 @@
                             <div class="feature_article_inner">
                                 <div class="tag_lg red"><a href="category.html">Son Dakika</a></div>
                                 <div class="feature_article_title">
-                                    <h1><a href="single.html" target="_self">{{$rs->title}} </a></h1>
+                                    <h1><a href="{{route('news',['id' => $rs->id, 'slug' => $rs->slug ])}}" target="_self">{{$rs->title}} </a></h1>
                                 </div>
                                 <!-- feature_article_title -->
 
@@ -169,7 +169,7 @@
                     <div class="feature_article_inner">
                         <div class="tag_lg purple"><a href="category.html">{{$rs->category->title}}</a></div>
                         <div class="feature_article_title">
-                            <h1><a href="single.html" target="_self">{{$rs->title}} </a></h1>
+                            <h1><a href="{{route('news',['id' => $rs->id, 'slug' => $rs->slug ])}}" target="_self">{{$rs->title}} </a></h1>
                         </div>
                         <!-- feature_article_title -->
 

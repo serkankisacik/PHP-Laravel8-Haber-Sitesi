@@ -18,9 +18,7 @@
                                                                 </span>
                                                             </div>
                                                         </form>
-                                                        @section('footerjs')
                                                             @livewireScripts
-                                                        @endsection
                                                     </div>
                                                 </li>
                                             </ul>
@@ -81,7 +79,7 @@
                                                 @endif
                                                     <li><a href="{{ url('admin') }}">Kontrol Paneli</a></li>
                                                 @else
-                                                    <li><a href="{{ route('admin_login') }}">Oturum Aç</a></li>
+                                                    <li><a href="{{ route('login') }}">Oturum Aç</a></li>
 
                                                     @if (Route::has('register'))
                                                     <li><a href="{{ route('register') }}">Kayıt Ol</a></li>

@@ -187,15 +187,6 @@
                                 and pain can procure him some great pleasure. To take a trivial example, which of us
                                 ever
                             </p>
-
-                            <p>
-                                But I must explain to you how all this mistaken idea of denouncing pleasure and praising
-                                pain was born and I will give you a complete account of the system, and expound the
-                                actual teachings of the great explorer of the truth, the master-builder of human
-                                happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure,
-                                but because those who do not know how to pursue pleasure rationally encounter
-                                consequences that are extremely painful.
-                            </p>
                         </div>
                         <!-- entity_content -->
 
@@ -268,8 +259,9 @@
                         <div class="media">
                             <div class="media-left">
                                 <a href="#">
-                                    <img alt="64x64" class="media-object" data-src="{{asset('assets')}}/img/reader_img1.jpg"
-                                         src="{{asset('assets')}}/img/reader_img1.jpg" data-holder-rendered="true">
+                                    @if(\Illuminate\Support\Facades\Auth::user()->profile_photo_path != null)
+                                        <img src="{{ \Illuminate\Support\Facades\Storage::url(\Illuminate\Support\Facades\Auth::user()->profile_photo_path) }}" height="65" alt="{{\Illuminate\Support\Facades\Auth::user()->name}}"></a>
+                                @endif
                                 </a>
                             </div>
 
@@ -304,8 +296,9 @@
                         </div>
                         <!--Entity Title -->
                         <div class="entity_comment_from">
-                        @livewire('review',['id' => 1])
+                        @livewire('review',['id' => $data->id])
                         </div>
+                        @livewireScripts
                     </div>
                     <!--Entity Comments -->
 
